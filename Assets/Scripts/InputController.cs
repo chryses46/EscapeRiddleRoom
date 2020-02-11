@@ -45,7 +45,7 @@ namespace Core.Control
             else if(StateMachineController.instance.gameState == StateMachineController.State.Play)
             {
                 Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
-                MovePlayer();
+                Player.instance.MovePlayer();
                 
             }
             else if(StateMachineController.instance.gameState == StateMachineController.State.Pause)
@@ -55,29 +55,7 @@ namespace Core.Control
             }
         }
 
-        private void MovePlayer()
-        {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            float verticalInput = Input.GetAxisRaw("Vertical");
-
-            if (Mathf.Abs(verticalInput) > 0 && Mathf.Abs(horizontalInput) > 0)
-            {
-                if (Mathf.Abs(verticalInput) > Mathf.Abs(horizontalInput))
-                {
-                    Debug.Log("taking vertical action");
-                    horizontalInput = 0;
-                }
-                else
-                {
-                    Debug.Log("taking horizontal action");
-                    verticalInput = 0;
-                }
-            }
-
-            Vector3 newDestination = new Vector3(horizontalInput * Player.instance.movementSpeed * Time.deltaTime, verticalInput * Player.instance.movementSpeed * Time.deltaTime, 0);
-
-            transform.position = transform.position + newDestination;
-        }
+        
 
     }
 
