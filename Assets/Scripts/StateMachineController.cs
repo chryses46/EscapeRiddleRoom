@@ -8,7 +8,12 @@ namespace Core
 
 
         public static StateMachineController instance;
-	
+
+        public enum GameState {Play, Pause, Menu};
+
+        public GameState gameState = GameState.Menu;
+
+
 	    void Awake()
         {
             instance = this;

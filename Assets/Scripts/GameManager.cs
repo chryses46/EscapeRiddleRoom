@@ -18,11 +18,14 @@ namespace Core
         void Awake ()
         {
             instance = this;
-	    }
+            CheckForControllers();
+
+        }
 	
-	    void Update () {
-		
-	    }
+	    void Update ()
+        {
+            CheckForControllers();
+        }
 
         // checks wether or not a controller is connected to the computer
         private void CheckForControllers()
