@@ -6,22 +6,16 @@ namespace Core
 {
     public class StateMachineController : MonoBehaviour
     {
-
         public enum State {Play, Pause, Menu};
 
         public State gameState = State.Menu;
 
         public static StateMachineController instance;
 
-        
-
-
 	    void Awake()
         {
             instance = this;
         }
-
-    
     }
 }
 

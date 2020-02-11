@@ -8,54 +8,57 @@ namespace Core.Control
     public class InputController : MonoBehaviour
     {
 
-        public static InputController instance;
+        Player player;
 
-        private void Awake()
+        private void Start()
         {
-            instance = this;
+            player = FindObjectOfType<Player>();
         }
 
         private void Update()
         {
-            ProcessInputControls();
+            ProcessInputControls(StateMachineController.instance.gameState);
         }
 
-        private void ProcessInputControls()
+        private void ProcessInputControls(StateMachineController.State state)
         {
-            if(StateMachineController.instance.gameState == StateMachineController.State.Menu)
+
+            switch (state)
             {
-
-                Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
-
-                if (Input.GetButtonDown("Submit"))
-                {
-                    Debug.Log("You pushed the submit button button.");
-                }
-
-                if(Input.GetButtonDown("Cancel"))
-                {
-                    Debug.Log("You pressed the cancel button.");
-                }
-
-                if(Input.GetButtonDown("Inventory"))
-                {
-                    Debug.Log("You pressed the inventory button.");
-                }
-            }
-            else if(StateMachineController.instance.gameState == StateMachineController.State.Play)
-            {
-                Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
-                Player.instance.MovePlayer();
-                
-            }
-            else if(StateMachineController.instance.gameState == StateMachineController.State.Pause)
-            {
-                Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
-                // do more stuff
+                case StateMachineController.State.Play:
+                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
+                    player.MovePlayer();
+                    break;
+                case StateMachineController.State.Pause:
+                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
+                    break;
+                case StateMachineController.State.Menu:
+                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
+                    break;
+                default:
+                    Commands();
+                    break;
             }
         }
 
-        
+        private static void Commands()
+        {
+            if (Input.GetButtonDown("Submit"))
+            {
+                Debug.Log("You pushed the submit button button.");
+            }
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                Debug.Log("You pressed the cancel button.");
+            }
+
+            if (Input.GetButtonDown("Inventory"))
+            {
+                Debug.Log("You pressed the inventory button.");
+            }
+        }
+
 
     }
 
