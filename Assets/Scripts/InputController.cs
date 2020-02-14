@@ -32,6 +32,8 @@ namespace Core.Control
                     break;
                 case StateMachineController.State.Menu:
                     break;
+                case StateMachineController.State.Dialog:
+                    break;
                 default:
                     Commands();
                     break;

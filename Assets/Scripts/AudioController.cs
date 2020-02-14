@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+namespace Core
 {
-
-    private void Awake()
+    public class AudioController : MonoBehaviour
     {
+
+
     }
-
-
 }
+

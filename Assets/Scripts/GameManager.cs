@@ -10,16 +10,17 @@ namespace Core
         public static GameManager instance;
 
         // Controller detection variables
-        public bool playerIndexSet = false;
+        private bool playerIndexSet = false;
         PlayerIndex playerIndex;
         GamePadState state;
         GamePadState prevState;
+
+        private string playerName = "Player Name";
 
         void Awake ()
         {
             instance = this;
             CheckForControllers();
-
         }
 	
 	    void Update ()
@@ -49,6 +50,16 @@ namespace Core
 
             prevState = state;
             state = GamePad.GetState(playerIndex);
+        }
+
+        public string GetPlayerName()
+        {
+            return playerName;
+        }
+
+        public void SetPlayerName(string name)
+        {
+            playerName = name;
         }
     }
 }
