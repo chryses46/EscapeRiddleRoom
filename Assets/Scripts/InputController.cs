@@ -26,14 +26,11 @@ namespace Core.Control
             switch (state)
             {
                 case StateMachineController.State.Play:
-                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
                     player.MovePlayer();
                     break;
                 case StateMachineController.State.Pause:
-                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
                     break;
                 case StateMachineController.State.Menu:
-                    Debug.Log("gameState in " + StateMachineController.instance.gameState + " state.");
                     break;
                 default:
                     Commands();
