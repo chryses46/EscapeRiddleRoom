@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
-using Core.UI;
-using UnityEngine.UI;
 
 namespace Core
 {
@@ -25,14 +23,14 @@ namespace Core
         void Awake ()
         {
             instance = this;
-            CheckForControllers();
-            dialogSystem = GetComponent<DialogSystem>();
-            uiManager = GetComponent<UIManager>();
+            
         }
 
         private void Start()
         {
-            
+            CheckForControllers();
+            dialogSystem = GetComponent<DialogSystem>();
+            uiManager = GetComponent<UIManager>();
         }
 
         void Update ()
@@ -66,11 +64,17 @@ namespace Core
 
         public void StartGame()
         {
-            uiManager.ToggleMainMenuUI(false);
-            uiManager.TogglePlayUI(true);
+            GetComponent<UIManager>().ToggleMainMenuUI(false);
+            GetComponent<UIManager>().TogglePlayUI(true);
             player.gameObject.SetActive(true);
             StateMachineController.instance.gameState = StateMachineController.State.Dialog;
-            dialogSystem.InitiateDialog();
+            GetComponent<DialogSystem>().InitiateDialog();
+        }
+
+        public void EnterPlayMode()
+        {
+            StateMachineController.instance.gameState = StateMachineController.State.Play;
+
         }
     }
 }

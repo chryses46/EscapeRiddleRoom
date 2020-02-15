@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 namespace Core
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(CircleCollider2D))]
     public class DialogSystem : MonoBehaviour
     {
         [SerializeField] GameObject dialogBox;
@@ -24,6 +22,9 @@ namespace Core
         private string playerName;
 
         private int currentLineOfDialog = 0;
+
+        string currentAnimationTrigger;
+
         private string[] dialogMessages = {
             "Welcome! I see you have finally awoken. Do not worry about your friend."+
                 " They are dead. What you should be concerned about is your own well-being.",
@@ -44,13 +45,15 @@ namespace Core
         {
             dialogBox.SetActive(true);
 
-            dialogBox.GetComponent<Animator>().SetTrigger("popUpBoxFadeIn"); // will call FadeInNamePlate when animation completes
+            dialogBox.GetComponent<Animator>().SetTrigger("dialogBoxFadeIn"); // will call FadeInNamePlate when animation completes
 
             namePlate.text = mysteryName;
         }
 
         private void UpdateDialogDisplay()
         {
+            if(currentAnimationTrigger != "dialogFadeIn") dialogDisplay.gameObject.GetComponent<Animator>().ResetTrigger(currentAnimationTrigger);
+
             switch (currentLineOfDialog)
             {
                 case 3:
@@ -67,12 +70,15 @@ namespace Core
                     dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
                     break;
             }
+            currentAnimationTrigger = "dialogFadeIn";
+            currentLineOfDialog++;
         }
 
         public void FadeInNamePlate()
         {
             namePlate.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
-            if(currentLineOfDialog == 0)
+            currentAnimationTrigger = "dialogFadeIn";
+            if (currentLineOfDialog == 0)
             {
                 UpdateDialogDisplay();
             }
@@ -80,40 +86,38 @@ namespace Core
 
         public void UserAdvanceDialog()
         {
-            if (currentLineOfDialog >= 0)
+            if (currentLineOfDialog > 0 && currentLineOfDialog <= dialogMessages.Length)
+            {
+                dialogDisplay.gameObject.GetComponent<Animator>().ResetTrigger(currentAnimationTrigger);
                 dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeOut");
-            CallNextDialogMessage();
+                currentAnimationTrigger = "dialogFadeOut";
+            }
+            else
+            {
+                ExitDialogState();
+            }
+                
         }
 
-        private void CallNextDialogMessage()
+        public void CallNextDialogMessage()
         {
-            currentLineOfDialog++;
             UpdateDialogDisplay();
         }
 
         public void SkipDialog()
         {
-            // end dialog and go to next step
+            ExitDialogState();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        public void ExitDialogState()
         {
-            
+            dialogBox.GetComponent<Animator>().SetTrigger("dialogBoxFadeOut");
+        }
+
+        public void DisableDialogBox()
+        {
+            dialogBox.SetActive(false);
+            GameManager.instance.EnterPlayMode();
         }
     }
-}
-
-public class Interactable : MonoBehaviour
-{
-    //stuff
-}
-
-public class Puzzle : Interactable
-{
-
-}
-
-public class Riddle : Interactable
-{
-
 }

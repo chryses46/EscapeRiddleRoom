@@ -4,21 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace Core.UI
+namespace Core
 {
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] Canvas mainMenuUICanvas;
-        [SerializeField] Canvas playUICanvas;
+        [SerializeField] GameObject mainMenuUICanvas;
+        [SerializeField] GameObject playUICanvas;
 
         public void ToggleMainMenuUI(bool isActive)
         {
-            mainMenuUICanvas.gameObject.SetActive(isActive);
+            Debug.Log("main menu control");
+            mainMenuUICanvas.SetActive(isActive);
         }
 
         public void TogglePlayUI(bool isActive)
         {
-            playUICanvas.gameObject.SetActive(isActive);
+            playUICanvas.SetActive(isActive);
         }
 
     }
