@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
+using Core.UI;
+using UnityEngine.UI;
 
 namespace Core
 {
@@ -15,20 +17,30 @@ namespace Core
         GamePadState state;
         GamePadState prevState;
 
-        private string playerName = "Player Name";
+        [SerializeField] Player player;
+
+        UIManager uiManager;
+        DialogSystem dialogSystem;
 
         void Awake ()
         {
             instance = this;
             CheckForControllers();
+            dialogSystem = GetComponent<DialogSystem>();
+            uiManager = GetComponent<UIManager>();
         }
-	
-	    void Update ()
+
+        private void Start()
+        {
+            
+        }
+
+        void Update ()
         {
             CheckForControllers();
         }
 
-        // checks wether or not a controller is connected to the computer
+        // checks whether or not a controller is connected to the computer
         private void CheckForControllers()
         {
             // Find a PlayerIndex, for a single player game
@@ -52,14 +64,13 @@ namespace Core
             state = GamePad.GetState(playerIndex);
         }
 
-        public string GetPlayerName()
+        public void StartGame()
         {
-            return playerName;
-        }
-
-        public void SetPlayerName(string name)
-        {
-            playerName = name;
+            uiManager.ToggleMainMenuUI(false);
+            uiManager.TogglePlayUI(true);
+            player.gameObject.SetActive(true);
+            StateMachineController.instance.gameState = StateMachineController.State.Dialog;
+            dialogSystem.InitiateDialog();
         }
     }
 }

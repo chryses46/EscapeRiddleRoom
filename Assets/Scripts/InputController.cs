@@ -8,11 +8,12 @@ namespace Core.Control
     public class InputController : MonoBehaviour
     {
 
-        Player player;
+       [SerializeField] Player player;
+        DialogSystem dialogSystem;
 
         private void Start()
         {
-            player = FindObjectOfType<Player>();
+            dialogSystem = GetComponent<DialogSystem>();
         }
 
         private void Update()
@@ -31,8 +32,11 @@ namespace Core.Control
                 case StateMachineController.State.Pause:
                     break;
                 case StateMachineController.State.Menu:
+                    if (Input.GetButtonDown("Submit")) { GameManager.instance.StartGame(); }
                     break;
                 case StateMachineController.State.Dialog:
+                    if (Input.GetButtonDown("Submit")) { dialogSystem.UserAdvanceDialog(); }
+                    else if(Input.GetButtonDown("Cancel")) { dialogSystem.SkipDialog(); }
                     break;
                 default:
                     Commands();

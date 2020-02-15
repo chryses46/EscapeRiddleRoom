@@ -7,19 +7,25 @@ using UnityEngine.UI;
 
 namespace Core
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class DialogSystem : MonoBehaviour
     {
         [SerializeField] GameObject dialogBox;
 
         [SerializeField] Text namePlate;
+
         [SerializeField] Text dialogDisplay;
 
         private readonly string mysteryName = "???";
+
         private readonly string badGuyName = "Charles Ravenburger";
 
-        private readonly string[] dialog = new string[5]{
-            "Welcome, " + GameManager.instance.GetPlayerName() + 
-                "! I see you have finally awoken. Do not worry about your friend."+
+        private string playerName;
+
+        private int currentLineOfDialog = 0;
+        private string[] dialogMessages = {
+            "Welcome! I see you have finally awoken. Do not worry about your friend."+
                 " They are dead. What you should be concerned about is your own well-being.",
             "As you can see, your time here is limited. I’ll be quick."+
                 " You will want to get out of this house as soon as possible."+
@@ -37,48 +43,77 @@ namespace Core
         public void InitiateDialog()
         {
             dialogBox.SetActive(true);
-            dialogBox.GetComponent<Animator>().SetTrigger("popUpBoxFadeIn");
+
+            dialogBox.GetComponent<Animator>().SetTrigger("popUpBoxFadeIn"); // will call FadeInNamePlate when animation completes
 
             namePlate.text = mysteryName;
+        }
 
-            // begin looping through the dialog lines in the dialog array
-            for (int currentLineOfDialog = 0; currentLineOfDialog < dialog.Length; currentLineOfDialog++)
+        private void UpdateDialogDisplay()
+        {
+            switch (currentLineOfDialog)
             {
-                switch (currentLineOfDialog)
-                {
-                    case 3:
-                        dialogDisplay.text = dialog[currentLineOfDialog];
-                        dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
-                        break;
-                    case 4:
-                        namePlate.text = badGuyName;
-                        dialogDisplay.text = dialog[currentLineOfDialog];
-                        dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
-                        break;
-                    default:
-                        dialogDisplay.text = dialog[currentLineOfDialog];
-                        break;
-                }
-
-                //wait for user input (press A to continue)
-                //fade out dialogDisplay
+                case 3:
+                    dialogDisplay.text = dialogMessages[currentLineOfDialog];
+                    dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
+                    break;
+                case 4:
+                    namePlate.text = badGuyName;
+                    dialogDisplay.text = dialogMessages[currentLineOfDialog];
+                    dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
+                    break;
+                default:
+                    dialogDisplay.text = dialogMessages[currentLineOfDialog];
+                    dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
+                    break;
             }
         }
 
         public void FadeInNamePlate()
         {
             namePlate.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
+            if(currentLineOfDialog == 0)
+            {
+                UpdateDialogDisplay();
+            }
         }
 
-        public void AdvanceDialog()
+        public void UserAdvanceDialog()
         {
-            // move forward in the dialog iteration
+            if (currentLineOfDialog >= 0)
+                dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeOut");
+            CallNextDialogMessage();
+        }
+
+        private void CallNextDialogMessage()
+        {
+            currentLineOfDialog++;
+            UpdateDialogDisplay();
         }
 
         public void SkipDialog()
         {
             // end dialog and go to next step
         }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            
+        }
     }
 }
 
+public class Interactable : MonoBehaviour
+{
+    //stuff
+}
+
+public class Puzzle : Interactable
+{
+
+}
+
+public class Riddle : Interactable
+{
+
+}
