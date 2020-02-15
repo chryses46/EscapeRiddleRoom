@@ -304,7 +304,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: 
+    functionName: CallFadeInNamePlateMethod
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 975cb2028c81c974aa68add17e202588,
       type: 3}
