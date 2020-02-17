@@ -10,10 +10,12 @@ namespace Core.Control
 
        [SerializeField] Player player;
         DialogSystem dialogSystem;
+        Core.UI.Timer timer;
 
         private void Start()
         {
             dialogSystem = GetComponent<DialogSystem>();
+            timer = FindObjectOfType<Core.UI.Timer>();
         }
 
         private void Update()
@@ -28,6 +30,7 @@ namespace Core.Control
             {
                 case StateMachineController.State.Play:
                     player.MovePlayer();
+                    DebugControls();
                     break;
                 case StateMachineController.State.Pause:
                     break;
@@ -41,6 +44,17 @@ namespace Core.Control
                 default:
                     Commands();
                     break;
+            }
+        }
+
+        private void DebugControls()
+        {
+            if(Debug.isDebugBuild)
+            {
+                if(Input.GetKeyDown(KeyCode.T))
+                {
+                    timer.StartPauseTimer();
+                }
             }
         }
 

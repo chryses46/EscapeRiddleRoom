@@ -56,6 +56,11 @@ namespace Core
 
             switch (currentLineOfDialog)
             {
+                case 1:
+                    dialogDisplay.text = dialogMessages[currentLineOfDialog];
+                    dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");
+                    gameObject.GetComponent<UIManager>().ToggleTimer(true);
+                    break;
                 case 3:
                     dialogDisplay.text = dialogMessages[currentLineOfDialog];
                     dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeIn");

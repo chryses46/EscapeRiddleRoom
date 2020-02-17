@@ -10,6 +10,9 @@ namespace Core
     {
         [SerializeField] GameObject mainMenuUICanvas;
         [SerializeField] GameObject playUICanvas;
+        [SerializeField] GameObject pauseInventoryScreen;
+        [SerializeField] GameObject timer;
+        [SerializeField] GameObject gameOverUICanvas;
 
         public void ToggleMainMenuUI(bool isActive)
         {
@@ -21,6 +24,22 @@ namespace Core
         {
             playUICanvas.SetActive(isActive);
         }
+
+        public void TogglePauseInventoryScreen(bool isActive)
+        {
+            pauseInventoryScreen.SetActive(isActive);
+        }
+
+        public void ToggleTimer(bool isActive)
+        {
+            timer.gameObject.SetActive(isActive);
+        }
+
+        public void ToggleGameOverUI(bool isActive)
+        {
+            gameOverUICanvas.SetActive(isActive);
+        }
+
 
     }
 }

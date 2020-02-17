@@ -10,7 +10,7 @@ namespace Core
         public static GameManager instance;
 
         // Controller detection variables
-        private bool playerIndexSet = false;
+        public bool playerIndexSet = false;
         PlayerIndex playerIndex;
         GamePadState state;
         GamePadState prevState;
@@ -29,8 +29,8 @@ namespace Core
         private void Start()
         {
             CheckForControllers();
-            dialogSystem = GetComponent<DialogSystem>();
-            uiManager = GetComponent<UIManager>();
+            dialogSystem = gameObject.GetComponent<DialogSystem>();
+            uiManager = gameObject.GetComponent<UIManager>();
         }
 
         void Update ()
@@ -51,7 +51,6 @@ namespace Core
                     GamePadState testState = GamePad.GetState(testPlayerIndex);
                     if (testState.IsConnected)
                     {
-                        Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
                         playerIndex = testPlayerIndex;
                         playerIndexSet = true;
                     }
@@ -64,16 +63,17 @@ namespace Core
 
         public void StartGame()
         {
-            GetComponent<UIManager>().ToggleMainMenuUI(false);
-            GetComponent<UIManager>().TogglePlayUI(true);
+            uiManager.ToggleMainMenuUI(false);
+            uiManager.TogglePlayUI(true);
             player.gameObject.SetActive(true);
             StateMachineController.instance.gameState = StateMachineController.State.Dialog;
-            GetComponent<DialogSystem>().InitiateDialog();
+            dialogSystem.InitiateDialog();
         }
 
         public void EnterPlayMode()
         {
             StateMachineController.instance.gameState = StateMachineController.State.Play;
+
 
         }
     }
