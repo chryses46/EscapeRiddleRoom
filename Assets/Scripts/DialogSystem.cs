@@ -25,6 +25,8 @@ namespace Core
 
         string currentAnimationTrigger;
 
+        bool exitingDialog;
+
         private string[] dialogMessages = {
             "Welcome! I see you have finally awoken. Do not worry about your friend."+
                 " They are dead. What you should be concerned about is your own well-being.",
@@ -91,22 +93,28 @@ namespace Core
 
         public void UserAdvanceDialog()
         {
-            if (currentLineOfDialog > 0 && currentLineOfDialog <= dialogMessages.Length)
+            if (exitingDialog) return;
+
+            dialogDisplay.gameObject.GetComponent<Animator>().ResetTrigger(currentAnimationTrigger);
+
+            dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeOut");
+
+            currentAnimationTrigger = "dialogFadeOut";
+
+        }
+
+        public void CallNextDialogMessage()
+        {
+            if (exitingDialog) return;
+
+            if (currentLineOfDialog > 0 && currentLineOfDialog < dialogMessages.Length)
             {
-                dialogDisplay.gameObject.GetComponent<Animator>().ResetTrigger(currentAnimationTrigger);
-                dialogDisplay.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeOut");
-                currentAnimationTrigger = "dialogFadeOut";
+                UpdateDialogDisplay();
             }
             else
             {
                 ExitDialogState();
             }
-                
-        }
-
-        public void CallNextDialogMessage()
-        {
-            UpdateDialogDisplay();
         }
 
         public void SkipDialog()
@@ -116,6 +124,8 @@ namespace Core
 
         public void ExitDialogState()
         {
+            exitingDialog = true;
+            namePlate.gameObject.GetComponent<Animator>().SetTrigger("dialogFadeOut");
             dialogBox.GetComponent<Animator>().SetTrigger("dialogBoxFadeOut");
         }
 

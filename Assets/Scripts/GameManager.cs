@@ -16,6 +16,7 @@ namespace Core
         GamePadState prevState;
 
         [SerializeField] Player player;
+        [SerializeField] GameObject gameBoard;
 
         UIManager uiManager;
         DialogSystem dialogSystem;
@@ -66,6 +67,7 @@ namespace Core
             uiManager.ToggleMainMenuUI(false);
             uiManager.TogglePlayUI(true);
             player.gameObject.SetActive(true);
+            gameBoard.SetActive(true);
             StateMachineController.instance.gameState = StateMachineController.State.Dialog;
             dialogSystem.InitiateDialog();
         }
@@ -73,8 +75,8 @@ namespace Core
         public void EnterPlayMode()
         {
             StateMachineController.instance.gameState = StateMachineController.State.Play;
-
-
+            gameObject.GetComponent<AudioController>().PlayGameMusic();
+            uiManager.StartTimer();
         }
     }
 }

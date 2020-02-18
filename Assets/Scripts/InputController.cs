@@ -29,8 +29,7 @@ namespace Core.Control
             switch (state)
             {
                 case StateMachineController.State.Play:
-                    player.MovePlayer();
-                    DebugControls();
+                    PlayControls();
                     break;
                 case StateMachineController.State.Pause:
                     break;
@@ -45,6 +44,14 @@ namespace Core.Control
                     Commands();
                     break;
             }
+        }
+
+        private void PlayControls()
+        {
+            player.MovePlayer();
+            if(Input.GetButtonDown("Submit"))
+                player.Interact();
+            DebugControls();
         }
 
         private void DebugControls()

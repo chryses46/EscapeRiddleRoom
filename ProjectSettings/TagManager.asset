@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: RoomImages
+    uniqueID: 3119486363
+    locked: 0
+  - name: Interactables
+    uniqueID: 2036374533
+    locked: 0

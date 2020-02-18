@@ -79,6 +79,11 @@ namespace Core.UI
             Debug.Log("Timer is running: " + timerRunning);
         }
 
+        public void StartTimer()
+        {
+            timerRunning = true;
+        }
+
         public void PauseTimer()
         {
             timerRunning = false;

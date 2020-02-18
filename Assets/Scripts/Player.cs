@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Core.Interactables;
 
 namespace Core
 {
@@ -10,7 +10,6 @@ namespace Core
         Animator animator;
         SpriteRenderer sprite;
 
-
         [SerializeField] float movementSpeed;
         [SerializeField] Material red;
         [SerializeField] Material blue;
@@ -18,8 +17,9 @@ namespace Core
         [SerializeField] Material yellow;
         [SerializeField] Material green;
 
-
         string currentAnimationTrigger;
+
+        Interactable interactable;
 
         private void Start()
         {
@@ -57,6 +57,16 @@ namespace Core
             Vector3 newDestination = new Vector3(horizontalInput * movementSpeed * Time.deltaTime, verticalInput * movementSpeed * Time.deltaTime, 0);
 
             transform.position = transform.position + newDestination;
+
+
+        }
+
+        public void Interact()
+        {
+            if(interactable)
+            {
+                Debug.Log("You attempt to interact with the " + interactable.name);
+            }
         }
 
         private void AnimateSprite(float horizontal, float vertical)
@@ -64,50 +74,58 @@ namespace Core
             // handle animation triggers
             
             //animator.ResetTrigger("Idle");
+            animator.ResetTrigger(currentAnimationTrigger);
+
             if (horizontal > 0)
             {
-                Debug.Log("East sprite");
-                animator.ResetTrigger(currentAnimationTrigger);
+                //Debug.Log("East sprite");
+
                 animator.SetTrigger("East");
-                    sprite.material = yellow;
+
                 currentAnimationTrigger = "East";           
             }
             else if (horizontal < 0)
             {
-                Debug.Log("West sprite");
-                animator.ResetTrigger(currentAnimationTrigger);
+                //Debug.Log("West sprite");
+
                 animator.SetTrigger("West");
-                    sprite.material = green;
+
                 currentAnimationTrigger = "West";
             }
             else if (vertical > 0)
             {
-                Debug.Log("North sprite");
-                animator.ResetTrigger(currentAnimationTrigger);
+               //Debug.Log("North sprite");
+
                 animator.SetTrigger("North");
-                    sprite.material = pink;
+
                 currentAnimationTrigger = "North";
             }
             else if (vertical < 0)
             {
-                Debug.Log("South sprite");
-                animator.ResetTrigger(currentAnimationTrigger);
+                //Debug.Log("South sprite");
+
                 animator.SetTrigger("South");
-                    sprite.material = blue;
+
                 currentAnimationTrigger = "South";
             }
             else
             {
-                Debug.Log("idle sprite");
-                animator.ResetTrigger(currentAnimationTrigger);
-                animator.SetTrigger("Idle");
-                    sprite.material = red;
-                currentAnimationTrigger = "Idle";
-                //animator.ResetTrigger("Idle");
-            }
-            //animator.ResetTrigger("Idle");
+                //Debug.Log("idle sprite");
 
-            
+                animator.SetTrigger("Idle");
+
+                currentAnimationTrigger = "Idle";
+            }
+        }
+
+        public void SetInteractable(Interactable interactiveObject)
+        {
+            interactable = interactiveObject;
+        }
+
+        public void ClearInteractable()
+        {
+            interactable = null;
         }
     }
 }

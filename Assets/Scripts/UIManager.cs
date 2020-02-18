@@ -16,7 +16,6 @@ namespace Core
 
         public void ToggleMainMenuUI(bool isActive)
         {
-            Debug.Log("main menu control");
             mainMenuUICanvas.SetActive(isActive);
         }
 
@@ -40,6 +39,10 @@ namespace Core
             gameOverUICanvas.SetActive(isActive);
         }
 
+        public void StartTimer()
+        {
+            timer.GetComponent<Core.UI.Timer>().StartTimer();
+        }
 
     }
 }

@@ -304,7 +304,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: CallDisableDialogBoxMethod()
+    functionName: CallDisableDialogBoxMethod
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c41b821c0542d11408c1757cd8fe4f6c,
       type: 3}

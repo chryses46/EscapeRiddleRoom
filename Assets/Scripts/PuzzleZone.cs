@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//namespace core.Interactable 
-//{
-
+namespace Core.Interactables 
+{
     public class PuzzleZone : Interactable
     {
 
 
-        void Update()
-        {
-
-        }
+        
     }
-//}
+}
