@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Core.Interactables 
 {
-    public class PuzzleZone : Interactable
+    public class Puzzle: Interactable
     {
+        [SerializeField] Door doorToUnlock;
 
 
         

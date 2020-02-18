@@ -10,6 +10,21 @@ namespace Core.Interactables
     public class Interactable : MonoBehaviour
     {
         Player player;
+        float colliderRadius = .25f;
+
+        private void Awake()
+        {
+            ConfigureRigidBodyAndCollider();
+        }
+
+        private void ConfigureRigidBodyAndCollider()
+        {
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+            gameObject.GetComponent<CircleCollider2D>().radius = colliderRadius;
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -42,6 +57,12 @@ namespace Core.Interactables
             {
                 player.ClearInteractable();
             }
+        }
+
+        public void FadeOut()
+        {
+            gameObject.GetComponent<Animator>().SetTrigger("fadeOut");
+
         }
     }
 }
