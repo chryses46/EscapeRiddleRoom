@@ -26,17 +26,22 @@ namespace Core.Control
         private void ProcessInputControls(StateMachineController.State state)
         {
 
+
+
             switch (state)
             {
                 case StateMachineController.State.Play:
                     PlayControls();
                     break;
+                case StateMachineController.State.Puzzle:
+                    PuzzleControls();
+                    break;
                 case StateMachineController.State.Pause:
                     break;
-                case StateMachineController.State.Menu:
+                case StateMachineController.State.Menu: // done
                     if (Input.GetButtonDown("Submit")) { GameManager.instance.StartGame(); }
                     break;
-                case StateMachineController.State.Dialog:
+                case StateMachineController.State.Dialog: // done
                     if (Input.GetButtonDown("Submit")) { dialogSystem.UserAdvanceDialog(); }
                     else if(Input.GetButtonDown("Cancel")) { dialogSystem.SkipDialog(); }
                     break;
@@ -46,12 +51,21 @@ namespace Core.Control
             }
         }
 
+        
+
         private void PlayControls()
         {
             player.MovePlayer();
+
             if(Input.GetButtonDown("Submit"))
                 player.Interact();
+
             DebugControls();
+        }
+        private void PuzzleControls()
+        {
+            // controls for the puzzles which will really just be handled in each puzzle's master script
+            // if I had more time, I'd pass something to something and make everything really nice and pretty but w/e
         }
 
         private void DebugControls()

@@ -1,18 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class Candle : MonoBehaviour
+namespace Core.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Candle : MonoBehaviour
     {
-        
-    }
+        [SerializeField] Sprite originalCandleImage;
+        [SerializeField] Sprite answerImage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Image image;
+
+        RectTransform rectTransform;
+
+        public void SetCandleImage(Sprite updatedImage)
+        {
+
+            image = gameObject.GetComponent<Image>();
+
+            image.sprite = updatedImage;
+        }
+
+        public Sprite GetCandleImage()
+        {
+            return gameObject.GetComponent<Image>().sprite;
+        }
+
+        public Vector3 GetRectTransformLocalPosition()
+        {
+            rectTransform = gameObject.GetComponent<RectTransform>();
+
+            return rectTransform.localPosition;
+        }
+
+        public void ResetCandleImage()
+        {
+            image = gameObject.GetComponent<Image>();
+
+            image.sprite = originalCandleImage;
+        }
+
+        public bool IsSolved()
+        {
+            if(GetCandleImage() == answerImage)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
