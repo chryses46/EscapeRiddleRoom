@@ -9,6 +9,7 @@ namespace Core
         AudioSource audioSource;
 
         [SerializeField] AudioClip gamePlayLoop;
+        [SerializeField] AudioClip doorOpening;
 
         private void Start()
         {
@@ -19,6 +20,11 @@ namespace Core
         {
             audioSource.clip = gamePlayLoop;
             audioSource.Play();
+        }
+
+        public void DoorOpenig()
+        {
+            audioSource.PlayOneShot(doorOpening);
         }
 
 

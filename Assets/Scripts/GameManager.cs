@@ -117,6 +117,7 @@ namespace Core
 
         public void TransitionRooms(Interactables.Room targetRoom, Interactables.Door targetDoor)
         {
+            gameObject.GetComponent<AudioController>().DoorOpenig();
             player.FadePlayerOut();
             gameBoard.MoveRooms(targetRoom);
             player.TeleportPlayer(targetDoor.GetPlayerPortZonePosition());
