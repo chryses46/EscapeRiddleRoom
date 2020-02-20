@@ -50,6 +50,7 @@ namespace Core.Interactables
 
         public void Interact()
         {
+            Debug.Log("Riddle interact");
             if (!riddleEnabled)
             {
                 uiManager.EnableRiddlePopUp(riddleImage);

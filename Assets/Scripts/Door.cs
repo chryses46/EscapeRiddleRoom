@@ -13,6 +13,7 @@ namespace Core.Interactables
         [SerializeField] AudioClip doorUnlockSound;
         [SerializeField] GameObject playerPortZone;
         [SerializeField] bool isUnlocked;
+        [SerializeField] bool flipUnlockImageOnY;   
 
         protected Player player;
 
@@ -20,7 +21,17 @@ namespace Core.Interactables
         {
             gameObject.GetComponent<AudioSource>().PlayOneShot(doorUnlockSound);
             isUnlocked = true;
-            gameObject.GetComponent<SpriteRenderer>().sprite = unlockImage;
+            if(flipUnlockImageOnY)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = unlockImage;
+                gameObject.GetComponent<SpriteRenderer>().flipY = true;
+
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = unlockImage;
+            }
+            
 
             //maybe send pop-up that door unlocked?
         }

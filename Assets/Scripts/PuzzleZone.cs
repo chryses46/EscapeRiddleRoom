@@ -56,7 +56,8 @@ namespace Core.Interactables
 
         private void EnableSolvedPuzzleDisplay()
         {
-            solvedPuzzleDisplay.SetActive(true);
+            if(solvedPuzzleDisplay)
+                solvedPuzzleDisplay.SetActive(true);
         }
     }
 }
