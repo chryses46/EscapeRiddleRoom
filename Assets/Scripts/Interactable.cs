@@ -9,7 +9,7 @@ namespace Core.Interactables
     [RequireComponent(typeof(CircleCollider2D))]
     public class Interactable : MonoBehaviour
     {
-        Player player;
+        
         float colliderRadius = .25f;
 
         private void Awake()
@@ -25,40 +25,6 @@ namespace Core.Interactables
             gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
             gameObject.GetComponent<CircleCollider2D>().radius = colliderRadius;
         }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            Debug.Log("entering " + name + "range");
-
-            InformPlayerOfActions(collision);
-
-        }
-
-        private void InformPlayerOfActions(Collider2D playerCollider)
-        {
-          if(playerCollider.tag == "Player")
-            {
-                player = playerCollider.gameObject.GetComponent<Player>();
-                player.SetInteractable(this);
-            }
-        }
-
-        public void Interact()
-        {
-            // Do this when the A button is pressed.
-
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            Debug.Log("leaving " + name + "range");
-
-            if(player)
-            {
-                player.ClearInteractable();
-            }
-        }
-
         public void FadeOut()
         {
             gameObject.GetComponent<Animator>().SetTrigger("fadeOut");

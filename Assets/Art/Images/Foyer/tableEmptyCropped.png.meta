@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 56a5850c4a6a04044a058b73939e6fb2
+guid: 34ce973079b74c949915f24986ada838
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5012506752546923936
-    second: SmallCandle_0
+      213: 2148752494752301066
+    second: tableEmptyCropped_1
+  - first:
+      213: -388537683812053421
+    second: foyer_table_empty
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -49,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 49, y: 8, z: 50, w: 4}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -89,13 +92,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SmallCandle_0
+      name: tableEmptyCropped_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 40
-        width: 16
-        height: 13
+        x: 49
+        y: 8
+        width: 86
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,8 +106,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57f8ee15a225eb641991482f9573bbde
-      internalID: 5012506752546923936
+      spriteID: 7c8e1fc262a01f64ba8db2f3440242d4
+      internalID: 2148752494752301066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foyer_table_empty
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57252821a801e014fad511573ac3762a
+      internalID: -388537683812053421
       vertices: []
       indices: 
       edges: []

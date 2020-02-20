@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ namespace Core
         [SerializeField] GameObject playUICanvas;
         [SerializeField] GameObject pauseInventoryScreen;
         [SerializeField] GameObject timer;
+        [SerializeField] GameObject riddlePopUp;
+        [SerializeField] Image riddleImage;
         [SerializeField] GameObject gameOverUICanvas;
 
         public void ToggleMainMenuUI(bool isActive)
@@ -44,6 +47,19 @@ namespace Core
             timer.GetComponent<Core.UI.Timer>().StartTimer();
         }
 
+        public void EnableRiddlePopUp(Sprite imageForRiddle)
+        {
+            riddleImage.sprite = imageForRiddle;
+            riddlePopUp.SetActive(true);
+            riddleImage.gameObject.SetActive(true);
+        }
+
+        internal void CloseRiddlePopUp()
+        {
+            riddleImage.gameObject.SetActive(false);
+            riddlePopUp.SetActive(false);
+            riddleImage.sprite = null;
+        }
     }
 }
 

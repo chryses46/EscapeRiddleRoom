@@ -18,8 +18,9 @@ namespace Core
         [SerializeField] Material green;
 
         string currentAnimationTrigger;
-
         Interactable interactable;
+        Puzzle puzzle;
+        Riddle riddle;
 
         private void Start()
         {
@@ -63,9 +64,13 @@ namespace Core
 
         public void Interact()
         {
-            if(interactable)
+            if(puzzle)
             {
-                Debug.Log("You attempt to interact with the " + interactable.name);
+                puzzle.Interact();
+            }
+            else
+            {
+                riddle.Interact();
             }
         }
 
@@ -74,7 +79,7 @@ namespace Core
             // handle animation triggers
             
             //animator.ResetTrigger("Idle");
-            animator.ResetTrigger(currentAnimationTrigger);
+            if(currentAnimationTrigger != null) animator.ResetTrigger(currentAnimationTrigger);
 
             if (horizontal > 0)
             {
@@ -118,14 +123,23 @@ namespace Core
             }
         }
 
-        public void SetInteractable(Interactable interactiveObject)
+        public void SetInteractable(Puzzle puzzleObject = null, Riddle riddleObject = null)
         {
-            interactable = interactiveObject;
+            if(puzzleObject != null)
+            {
+                puzzle = puzzleObject;
+            }
+
+            if(riddleObject != null)
+            {
+                riddle = riddleObject;
+            }
         }
 
         public void ClearInteractable()
         {
-            interactable = null;
+            puzzle = null;
+            riddle = null;
         }
     }
 }
