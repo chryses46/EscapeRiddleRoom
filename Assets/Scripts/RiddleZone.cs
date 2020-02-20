@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Interactables
 {
-    public class Riddle : Interactable
+    public class RiddleZone : Interactable
     {
         
         UIManager uiManager;
@@ -22,10 +22,7 @@ namespace Core.Interactables
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("entering " + name + "range");
-
             InformPlayerOfActions(collision);
-
         }
 
         private void InformPlayerOfActions(Collider2D playerCollider)
@@ -39,8 +36,6 @@ namespace Core.Interactables
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            Debug.Log("leaving " + name + "range");
-
             if (player)
             {
                 player.ClearInteractable();

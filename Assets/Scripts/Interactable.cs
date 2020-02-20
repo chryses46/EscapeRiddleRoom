@@ -9,9 +9,6 @@ namespace Core.Interactables
     [RequireComponent(typeof(CircleCollider2D))]
     public class Interactable : MonoBehaviour
     {
-        
-        float colliderRadius = .25f;
-
         private void Awake()
         {
             ConfigureRigidBodyAndCollider();
@@ -23,7 +20,6 @@ namespace Core.Interactables
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-            gameObject.GetComponent<CircleCollider2D>().radius = colliderRadius;
         }
         public void FadeOut()
         {

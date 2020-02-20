@@ -9,25 +9,26 @@ namespace Core.UI
         [SerializeField] GameObject outline;
         [SerializeField] GameObject selected;
         [SerializeField] Candle[] candles;
+        [SerializeField] Core.Interactables.Door doorToUnlock;
 
         private int numberOfCandles = 4;
 
-        private Vector3 originalHighlightPos;
+        private Vector3 originalOutlinePos;
 
         private Candle currentSelectedCandle;
 
-        private Candle currentHighlightedCandle;
+        private Candle currentOutlinedCandle;
 
-        private int currentCandleHighlightOrder = 0;
+        private int currentOutlinedCandleOrder = 0;
 
-        private Sprite cachedHighlightedImage;
+        private Sprite cachedOutlinedCandleImage;
 
         private bool dpadActive;
 
         private void Awake()
         {
-            originalHighlightPos = outline.GetComponent<RectTransform>().localPosition;
-            currentHighlightedCandle = candles[0];
+            originalOutlinePos = outline.GetComponent<RectTransform>().localPosition;
+            currentOutlinedCandle = candles[0];
         }
 
         private void Update()
@@ -35,34 +36,43 @@ namespace Core.UI
             if (StateMachineController.instance.gameState == StateMachineController.State.Puzzle)
             {
                 HighlightCandle();
-                SelectCandle();
+
+                if (Input.GetButtonDown("Submit"))
+                {
+                    SelectCandle();
+                }
+                else if (Input.GetButtonDown("Cancel"))
+                {
+                    ExitPuzzle();
+                }
+                
             }
         }
 
         public void HighlightCandle()
         {
-            if (!dpadActive && Mathf.Abs(Input.GetAxis("Horizontal")) == 1)
+            if (!dpadActive && Mathf.Abs(Input.GetAxis("DPadHorizontal")) == 1)
             {
                 dpadActive = true;
 
-                if(currentCandleHighlightOrder == candles.Length)
+                if(currentOutlinedCandleOrder == candles.Length)
                 {
                     return;
                 }
-                else if(Input.GetAxis("Horizontal") > 0 && currentCandleHighlightOrder <= 2)
+                else if(Input.GetAxis("DPadHorizontal") > 0 && currentOutlinedCandleOrder <= 2)
                 {
-                    currentCandleHighlightOrder++;
-                    outline.GetComponent<RectTransform>().localPosition = candles[currentCandleHighlightOrder].GetRectTransformLocalPosition();
-                    currentHighlightedCandle = candles[currentCandleHighlightOrder];
+                    currentOutlinedCandleOrder++;
+                    outline.GetComponent<RectTransform>().localPosition = candles[currentOutlinedCandleOrder].GetRectTransformLocalPosition();
+                    currentOutlinedCandle = candles[currentOutlinedCandleOrder];
                 }
-                else if(Input.GetAxis("Horizontal") < 0 && currentCandleHighlightOrder >= 1)
+                else if(Input.GetAxis("DPadHorizontal") < 0 && currentOutlinedCandleOrder >= 1)
                 {
-                    currentCandleHighlightOrder--;
-                    outline.GetComponent<RectTransform>().localPosition = candles[currentCandleHighlightOrder].GetRectTransformLocalPosition();
-                    currentHighlightedCandle = candles[currentCandleHighlightOrder];
+                    currentOutlinedCandleOrder--;
+                    outline.GetComponent<RectTransform>().localPosition = candles[currentOutlinedCandleOrder].GetRectTransformLocalPosition();
+                    currentOutlinedCandle = candles[currentOutlinedCandleOrder];
                 }
             }
-            else if (dpadActive && Mathf.Abs(Input.GetAxis("Horizontal")) == 0)
+            else if (dpadActive && Mathf.Abs(Input.GetAxis("DPadHorizontal")) == 0)
             {
                 dpadActive = false;
             }
@@ -70,28 +80,23 @@ namespace Core.UI
 
         public void SelectCandle()
         {
-            if(Input.GetButtonDown("Submit"))
-            {
                 if(!currentSelectedCandle)
                 {
-                    currentSelectedCandle = currentHighlightedCandle;
+                    currentSelectedCandle = currentOutlinedCandle;
                     EnableSelected(currentSelectedCandle.GetRectTransformLocalPosition());
                 }
-                else if(currentHighlightedCandle == currentSelectedCandle)
+                else if(currentOutlinedCandle == currentSelectedCandle)
                 {
                     DisableSelected();
                 }
                 else
                 {
-                    cachedHighlightedImage = currentHighlightedCandle.GetCandleImage();
-                    currentHighlightedCandle.SetCandleImage(currentSelectedCandle.GetCandleImage());
-                    currentSelectedCandle.SetCandleImage(cachedHighlightedImage);
+                    cachedOutlinedCandleImage = currentOutlinedCandle.GetCandleImage();
+                    currentOutlinedCandle.SetCandleImage(currentSelectedCandle.GetCandleImage());
+                    currentSelectedCandle.SetCandleImage(cachedOutlinedCandleImage);
                     DisableSelected();
-                    currentSelectedCandle = null;
                     CheckIfSolved();
                 }
-                    
-            }
                
         }
 
@@ -104,6 +109,7 @@ namespace Core.UI
         private void DisableSelected()
         {
             selected.SetActive(false);
+            currentSelectedCandle = null;
         }
 
         private void CheckIfSolved()
@@ -120,22 +126,24 @@ namespace Core.UI
 
             if(matches == candles.Length)
             {
-                Debug.Log("Solved!");
-
-                //unlock door
-                    // in door script, will need to create a "unlock" method
-                        // method will update the 
-                            // door direction sprite to the correct arrow
-                            // set door to "unlocked" - something the player class should see when stepping into a door collider
-                        // when it's unlocked, and the player steps in, the player triggers a transition to the adjacent room.
+                GameManager.instance.ExitPuzzle(true);
                 
-                // Call FoyerPuzzleSolved from GameManager
-                    // will disable this puzzle UI
-                    // will re-enable the Foyer
-                    // will re-enable the Player
-                    // will set the state to Play
-
+                doorToUnlock.UnlockDoor();
             }
+        }
+
+        private void ExitPuzzle()
+        {
+            ResetOutlinePos();
+
+            DisableSelected();
+
+            GameManager.instance.ExitPuzzle();
+        }
+
+        private void ResetOutlinePos()
+        {
+            outline.GetComponent<RectTransform>().localPosition = originalOutlinePos;
         }
     }
 }

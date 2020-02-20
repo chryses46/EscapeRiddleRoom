@@ -4,24 +4,20 @@ using UnityEngine;
 
 namespace Core.Interactables 
 {
-    public class Puzzle: Interactable
+    public class PuzzleZone: Interactable
     {
-        [SerializeField] Door doorToUnlock;
-
         protected Player player;
 
-        bool puzzleEnabled;
+        [SerializeField] GameObject linkedPuzzleUIObject;
 
-        private void Awake()
-        {
-        }
+        [SerializeField] GameObject solvedPuzzleDisplay;
+
+        private bool isPuzzleSolved;
+
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("entering " + name + "range");
-
             InformPlayerOfActions(collision);
-
         }
 
         private void InformPlayerOfActions(Collider2D playerCollider)
@@ -35,20 +31,32 @@ namespace Core.Interactables
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            Debug.Log("leaving " + name + "range");
-
             if (player)
             {
                 player.ClearInteractable();
-                
-                //also close puzzle ui
             }
-
         }
 
         public void Interact()
         {
-            // show puzzle UI
+            if(!IsLinkedPuzzleSolved())
+                GameManager.instance.EnterPuzzle(linkedPuzzleUIObject, this);
+        }
+
+        public bool IsLinkedPuzzleSolved()
+        {
+            return isPuzzleSolved;
+        }
+
+        public void SetLinkedPuzzleSolved()
+        {
+            isPuzzleSolved = true;
+            EnableSolvedPuzzleDisplay();
+        }
+
+        private void EnableSolvedPuzzleDisplay()
+        {
+            solvedPuzzleDisplay.SetActive(true);
         }
     }
 }

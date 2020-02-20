@@ -7,7 +7,16 @@ TextureImporter:
     second: foyerCropped_0
   - first:
       213: 7473770169271570088
-    second: foyerCropped_1
+    second: DoorLocked
+  - first:
+      213: -7175879698910316728
+    second: foyerRightWall
+  - first:
+      213: 3944368120512777777
+    second: foyerBottomRightCorner
+  - first:
+      213: 2453813860412158828
+    second: foyerBottomWall
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,12 +104,12 @@ TextureImporter:
       name: foyerCropped_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 1184
-        height: 1012
+        x: 0
+        y: 89
+        width: 1101
+        height: 923
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -113,7 +122,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: foyerCropped_1
+      name: DoorLocked
       rect:
         serializedVersion: 2
         x: 716
@@ -121,7 +130,7 @@ TextureImporter:
         width: 87
         height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,6 +138,69 @@ TextureImporter:
       bones: []
       spriteID: 3f1871092aa6d2a46abdb43c5b943e0b
       internalID: 7473770169271570088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foyerRightWall
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 458
+        width: 43
+        height: 554
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e657574ee6a1641aee02b28a3dfaad
+      internalID: -7175879698910316728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foyerBottomRightCorner
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 46
+        width: 273
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b6a39aad74bf645965035ef67da795
+      internalID: 3944368120512777777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foyerBottomWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 39
+        width: 657
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7b2de3cb8acaf478c80964194b13f6
+      internalID: 2453813860412158828
       vertices: []
       indices: 
       edges: []

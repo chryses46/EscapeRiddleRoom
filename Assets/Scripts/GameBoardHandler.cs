@@ -7,25 +7,37 @@ namespace Core.Interactables
 {
     public class GameBoardHandler : MonoBehaviour
     {
-        private GameObject currentRoom;
+        private Room currentRoom;
 
-        public GameObject GetCurrentRoom()
+        public Room GetCurrentRoom()
         {
             return currentRoom;
         }
 
-        public void SetCurrentRoom(GameObject room)
+        public void SetCurrentRoom(Room room)
         {
             currentRoom = room;
         }
 
-        public void MoveRooms()
+        public void ToggleCurrentRoom(bool isActive)
         {
-            // fade player out (call a method from player script)
-            // diable currentRoom
-            // enable adjacent door's room (need a linking door variable passed in here)
-            // set player pos to linking door's playerPos.
-            // fade player in (call a method from player script)
+            if(currentRoom)
+            {
+                currentRoom.gameObject.SetActive(isActive);
+            }
+        }
+
+        public void MoveRooms(Room targetRoom)
+        {
+            currentRoom.FadeRoomOut();
+
+            currentRoom.DeactivateSelf(); // remove once animation complete
+
+            SetCurrentRoom(targetRoom);
+
+            currentRoom.gameObject.SetActive(true);
+
+            currentRoom.FadeRoomIn();
         }
     }
 }

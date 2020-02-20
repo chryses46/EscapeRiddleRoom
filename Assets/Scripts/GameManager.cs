@@ -16,8 +16,16 @@ namespace Core
         GamePadState prevState;
 
         [SerializeField] Player player;
-        [SerializeField] Core.Interactables.GameBoardHandler gameBoard;
-        [SerializeField] GameObject foyer;
+
+        [SerializeField] Interactables.GameBoardHandler gameBoard;
+
+        [SerializeField] Interactables.Room foyer;
+
+        [SerializeField] Interactables.Room currentDevelopmentRoom;
+
+        private GameObject currentPuzzleUI; // passed from PuzzleZone
+
+        private Interactables.PuzzleZone currentPuzzleZone;
 
         UIManager uiManager;
         DialogSystem dialogSystem;
@@ -25,14 +33,18 @@ namespace Core
         void Awake ()
         {
             instance = this;
-            
         }
 
         private void Start()
         {
             CheckForControllers();
+            gameBoard = gameBoard.gameObject.GetComponent<Core.Interactables.GameBoardHandler>();
             dialogSystem = gameObject.GetComponent<DialogSystem>();
             uiManager = gameObject.GetComponent<UIManager>();
+            
+            // DISABLE BEFORE SHIP
+            gameBoard.SetCurrentRoom(currentDevelopmentRoom);
+            gameBoard.ToggleCurrentRoom(true);
         }
 
         void Update ()
@@ -68,7 +80,9 @@ namespace Core
             uiManager.ToggleMainMenuUI(false);
             uiManager.TogglePlayUI(true);
             player.gameObject.SetActive(true);
+            gameBoard.SetCurrentRoom(foyer);
             gameBoard.gameObject.SetActive(true);
+            gameBoard.ToggleCurrentRoom(true);
             StateMachineController.instance.gameState = StateMachineController.State.Dialog;
             dialogSystem.InitiateDialog();
         }
@@ -79,6 +93,35 @@ namespace Core
             gameObject.GetComponent<AudioController>().PlayGameMusic();
             uiManager.StartTimer();
             gameBoard.SetCurrentRoom(foyer);
+        }
+        public void EnterPuzzle(GameObject currentPuzzleUIObject, Interactables.PuzzleZone messagingPuzzleZone)
+        {
+            currentPuzzleZone = messagingPuzzleZone;
+            currentPuzzleUI = currentPuzzleUIObject;
+            gameBoard.ToggleCurrentRoom(false);
+            player.gameObject.SetActive(false);
+            currentPuzzleUI.SetActive(true);
+            StateMachineController.instance.gameState = StateMachineController.State.Puzzle;
+        }
+
+        public void ExitPuzzle(bool puzzleWasSolved = false)
+        {
+            if (puzzleWasSolved) currentPuzzleZone.SetLinkedPuzzleSolved();
+
+            currentPuzzleUI.SetActive(false);
+            currentPuzzleUI = null;
+            gameBoard.ToggleCurrentRoom(true);
+            player.gameObject.SetActive(true);
+            StateMachineController.instance.gameState = StateMachineController.State.Play;
+        }
+
+        public void TransitionRooms(Interactables.Room targetRoom, Interactables.Door targetDoor)
+        {
+            player.FadePlayerOut();
+            gameBoard.MoveRooms(targetRoom);
+            player.TeleportPlayer(targetDoor.GetPlayerPortZonePosition());
+            //consider facing direction sprite for player
+            player.FadePlayerIn();
         }
     }
 }

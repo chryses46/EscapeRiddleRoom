@@ -19,8 +19,9 @@ namespace Core
 
         string currentAnimationTrigger;
         Interactable interactable;
-        Puzzle puzzle;
-        Riddle riddle;
+        PuzzleZone puzzle;
+        RiddleZone riddle;
+        Door door;
 
         private void Start()
         {
@@ -68,9 +69,13 @@ namespace Core
             {
                 puzzle.Interact();
             }
-            else
+            else if(riddle)
             {
                 riddle.Interact();
+            }
+            else if(door)
+            {
+                door.Interact();
             }
         }
 
@@ -123,16 +128,19 @@ namespace Core
             }
         }
 
-        public void SetInteractable(Puzzle puzzleObject = null, Riddle riddleObject = null)
+        public void SetInteractable(PuzzleZone puzzleObject = null, RiddleZone riddleObject = null, Door doorObject = null)
         {
             if(puzzleObject != null)
             {
                 puzzle = puzzleObject;
             }
-
-            if(riddleObject != null)
+            else if(riddleObject != null)
             {
                 riddle = riddleObject;
+            }
+            else if(doorObject != null)
+            {
+                door = doorObject;
             }
         }
 
@@ -140,6 +148,26 @@ namespace Core
         {
             puzzle = null;
             riddle = null;
+            door = null;
+        }
+
+        public void FadePlayerOut()
+        {
+            // animator.ResetTrigger(currentAnimationTrigger);
+            // animator.SetTrigger("FadeOut");
+            // currentAnimationTrigger = "FadeOut";
+        }
+
+        public void FadePlayerIn()
+        {
+            // animator.ResetTrigger(currentAnimationTrigger);
+            // animator.SetTrigger("FadeIn");
+            // currentAnimationTrigger = "FadeIn";
+        }
+
+        public void TeleportPlayer(Vector3 targetPosition)
+        {
+            gameObject.transform.position = targetPosition;
         }
     }
 }
