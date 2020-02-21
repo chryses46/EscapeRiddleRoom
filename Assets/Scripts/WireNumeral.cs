@@ -7,12 +7,28 @@ namespace Core.Interactables
 {
     public class WireNumeral : MonoBehaviour
     {
+        [SerializeField] Image hangingWire;
         [SerializeField] Image straightWire;
         [SerializeField] Image oneOverWire;
         [SerializeField] Image twoOverWire;
         [SerializeField] Image threeOverWire;
 
         Text numeralText;
+
+
+        string[] allowableNumerals = new string[]
+        {
+            "I",
+            "II",
+            "III",
+            "IV",
+            "V",
+            "VI",
+            "VII",
+            "VIII",
+            "IX",
+            "X"
+        };
 
         private int activeWireImage;
 
@@ -25,19 +41,25 @@ namespace Core.Interactables
         private void Awake()
         {
             numeralText = GetComponent<Text>();
+            SetNumeralString();
         }
 
-        public void SetNumeralString(string givenNumeralString)
+        public void SetNumeralString()
         {
-            currentNumeralString = givenNumeralString;
+            int random = UnityEngine.Random.Range(1, 9);
 
-            numeralText.text = currentNumeralString;
+            numeralText.text = allowableNumerals[random];
+
+            currentNumeralString = allowableNumerals[random];
         }
 
         public string GetCurrentNumeralString()
         {
             return currentNumeralString;
         }
+
+
+
 
         public void SetActiveWireImage(int selectedCharacterNode)
         {

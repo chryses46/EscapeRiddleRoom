@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Interactables;
+using System;
 
 namespace Core
 {
@@ -11,13 +12,15 @@ namespace Core
         SpriteRenderer sprite;
 
         [SerializeField] float movementSpeed;
-        [SerializeField] Material red;
-        [SerializeField] Material blue;
-        [SerializeField] Material pink;
-        [SerializeField] Material yellow;
-        [SerializeField] Material green;
+        [SerializeField] Sprite northIdle;
+        [SerializeField] Sprite southIdle;
+        [SerializeField] Sprite eastIdle;
+        [SerializeField] Sprite westIdle;
 
         string currentAnimationTrigger;
+
+
+
         Interactable interactable;
         PuzzleZone puzzle;
         RiddleZone riddle;
@@ -28,7 +31,13 @@ namespace Core
         {
             animator = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+
+            SetIdleSprite();
         }
+
+        enum Direction {North, South, East, West };
+
+        Direction currentDirection = Direction.North;
 
         public void MovePlayer()
         {
@@ -97,7 +106,8 @@ namespace Core
 
                 animator.SetTrigger("East");
 
-                currentAnimationTrigger = "East";           
+                currentAnimationTrigger = "East";
+                currentDirection = Direction.East;
             }
             else if (horizontal < 0)
             {
@@ -106,6 +116,7 @@ namespace Core
                 animator.SetTrigger("West");
 
                 currentAnimationTrigger = "West";
+                currentDirection = Direction.West;
             }
             else if (vertical > 0)
             {
@@ -114,6 +125,7 @@ namespace Core
                 animator.SetTrigger("North");
 
                 currentAnimationTrigger = "North";
+                currentDirection = Direction.North;
             }
             else if (vertical < 0)
             {
@@ -122,6 +134,7 @@ namespace Core
                 animator.SetTrigger("South");
 
                 currentAnimationTrigger = "South";
+                currentDirection = Direction.South;
             }
             else
             {
@@ -130,6 +143,29 @@ namespace Core
                 animator.SetTrigger("Idle");
 
                 currentAnimationTrigger = "Idle";
+
+                SetIdleSprite();
+            }
+        }
+
+        private void SetIdleSprite()
+        {
+            switch (currentDirection)
+            {
+                case Direction.North:
+                    sprite.sprite = northIdle;
+                    break;
+                case Direction.South:
+                    sprite.sprite = southIdle;
+                    break;
+                case Direction.East:
+                    sprite.sprite = eastIdle;
+                    break;
+                case Direction.West:
+                    sprite.sprite = westIdle;
+                    break;
+                default:
+                    break;
             }
         }
 

@@ -19,8 +19,8 @@ namespace Core.Interactables
 
         public void UnlockDoor()
         {
-            gameObject.GetComponent<AudioSource>().PlayOneShot(doorUnlockSound);
             isUnlocked = true;
+
             if(flipUnlockImageOnY)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = unlockImage;

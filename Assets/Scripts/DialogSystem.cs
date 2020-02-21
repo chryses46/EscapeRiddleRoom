@@ -32,8 +32,8 @@ namespace Core
                 " They are dead. What you should be concerned about is your own well-being.",
             "As you can see, your time here is limited. I’ll be quick."+
                 " You will want to get out of this house as soon as possible."+
-                " The catch is there are a number of quite clever - if I do say so myself - puzzles that you will need to solve."+
-                " Though these are no ordinary puzzles! If you wish to solve these puzzles, I highly recommend you seek their accompanying riddles.",
+                " The catch is there are a number of quite clever - if I do say so myself - puzzles that you will need to solve.",
+            "Though these are no ordinary puzzles! If you wish to solve these puzzles, I highly recommend you seek their accompanying riddles.",
             "The riddles will be quite useful, if not paramount, to your success here."+
                 " And do not fret, I will not count off time as you analyze the riddles."+
                 " Puzzles, on the other hand, I suggest you solve with haste. That is it.",

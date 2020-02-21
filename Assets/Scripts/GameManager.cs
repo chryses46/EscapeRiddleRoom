@@ -33,6 +33,7 @@ namespace Core
 
         UIManager uiManager;
         DialogSystem dialogSystem;
+        AudioController audioController;
 
         void Awake ()
         {
@@ -45,6 +46,7 @@ namespace Core
             gameBoard = gameBoard.gameObject.GetComponent<Core.Interactables.GameBoardHandler>();
             dialogSystem = gameObject.GetComponent<DialogSystem>();
             uiManager = gameObject.GetComponent<UIManager>();
+            audioController = gameObject.GetComponent<AudioController>();
             
             // DISABLE BEFORE SHIP
             gameBoard.SetCurrentRoom(currentDevelopmentRoom);
@@ -87,6 +89,7 @@ namespace Core
             gameBoard.SetCurrentRoom(foyer);
             gameBoard.gameObject.SetActive(true);
             gameBoard.ToggleCurrentRoom(true);
+            audioController.PlayDialogMusic();
             StateMachineController.instance.gameState = StateMachineController.State.Dialog;
             dialogSystem.InitiateDialog();
         }
@@ -110,9 +113,14 @@ namespace Core
 
         public void ExitPuzzle(bool puzzleWasSolved = false, bool finalPuzzle = false)
         {
-            if (puzzleWasSolved) currentPuzzleZone.SetLinkedPuzzleSolved();
+            if (puzzleWasSolved)
+            {
+                currentPuzzleZone.SetLinkedPuzzleSolved();
+                audioController.DoorUnlocking();
+            }
 
             if (finalPuzzle) uiManager.EnableRiddlePopUp(null, true);
+
 
             currentPuzzleUI.SetActive(false);
             currentPuzzleUI = null;

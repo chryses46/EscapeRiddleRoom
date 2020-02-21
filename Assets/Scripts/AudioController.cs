@@ -10,6 +10,8 @@ namespace Core
 
         [SerializeField] AudioClip gamePlayLoop;
         [SerializeField] AudioClip doorOpening;
+        [SerializeField] AudioClip doorUnlock;
+        [SerializeField] AudioClip dialogLoop;
 
         private void Start()
         {
@@ -22,11 +24,21 @@ namespace Core
             audioSource.Play();
         }
 
+        public void PlayDialogMusic()
+        {
+            audioSource.clip = dialogLoop;
+            audioSource.Play();
+        }
+
         public void DoorOpenig()
         {
             audioSource.PlayOneShot(doorOpening);
         }
 
+        public void DoorUnlocking()
+        {
+            audioSource.PlayOneShot(doorUnlock);
+        }
 
     }
 }

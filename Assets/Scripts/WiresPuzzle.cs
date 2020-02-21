@@ -17,91 +17,26 @@ namespace Core.Interactables
 
         //KEY is character
         //VALUE is numeral
-        private string[,] characterNumeralPairs = new string[16,2]
-        {
-            { "A","I" },
-            { "B","II" },
-            { "C","III" },
-            { "D","IV" },
-            { "E","V" },
-            { "F","VI" },
-            { "G","VII" },
-            { "H","VIII" },
-            { "I","IX" },
-            { "J","X" },
-            { "K","XI" },
-            { "L","XII" },
-            { "M","XIII" },
-            { "N","XIV" },
-            { "O","XV" },
-            { "P","XVI" }
-        };
-
-        private string[,] chosenCharacterNumeralPairs = new string[4,2];
-
-        
-
         private void Awake()
         {
-            AssignCharactersAndNumerals();
         }
 
-        private void PickRandomPair()
+        private void Update()
         {
-            int[] chosenRandom = new int[4];
-
-            for (int row = 0; row < 4; row++)
-            { 
-                bool chosenRandomExists = true;
-
-                int chosenPairRow;
-
-                do
+            if(StateMachineController.instance.gameState == StateMachineController.State.Puzzle)
+            {
+                MoveFinger();
+                SelectNumeral();
+                
+                if(Input.GetButtonDown("Cancel"))
                 {
-                     chosenPairRow = UnityEngine.Random.Range(1,16);
-
-                    for (int i = 0; i < chosenRandom.Length; i++)
-                    {
-                        if (chosenPairRow == chosenRandom[i])
-                        {
-                            chosenRandomExists = true;
-                        }
-                        else
-                        {
-                            chosenRandomExists = false;
-                        }
-                            
-                    }
-                    
-                }while (chosenRandomExists);
-
-                chosenRandom[row] = chosenPairRow;
-
-                for (int col = 0; col < 2; col++)
-                {
-                    chosenCharacterNumeralPairs[row,col] =characterNumeralPairs[chosenPairRow,col];
+                    ExitPuzzle(true);
                 }
+
+
             }
         }
 
-        private void AssignCharactersAndNumerals()
-        {
-            PickRandomPair();
-
-            Debug.Log("charnumpairlen:" + chosenCharacterNumeralPairs.Length);
-
-            for (int i = 0; i < 4; i++)
-            {
-                characters[i].SetCharacterString(chosenCharacterNumeralPairs[i, 0]);
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                numerals[i].SetNumeralString(chosenCharacterNumeralPairs[0, i]);
-            }
-            // assign letters to each WireCharacter
-            // assign numerals to each WireNumeral.
-        }
 
         private void AssignChosenCharactersByRandom()
         {
@@ -142,7 +77,18 @@ namespace Core.Interactables
             // set 
         }
 
+        private void ExitPuzzle(bool isSolved = false)
+        {
+            if (isSolved)
+            {
+                GameManager.instance.ExitPuzzle(isSolved);
+            }
+            else
+            {
+                GameManager.instance.ExitPuzzle();
+            }
 
+        }
 
     }
 }

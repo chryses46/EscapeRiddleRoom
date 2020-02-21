@@ -11,6 +11,20 @@ namespace Core.Interactables
 
         string currentCharacterString;
 
+        string[] allowableCharacters = new string[]
+        {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+        };
+
         private void Start()
         {
             characterText = gameObject.GetComponent<Text>();
@@ -18,9 +32,11 @@ namespace Core.Interactables
 
         public void SetCharacterString(string givenCharacterString)
         {
-            currentCharacterString = givenCharacterString;
+            int random = UnityEngine.Random.Range(1, 9);
 
-            characterText.text = currentCharacterString;
+            characterText.text = allowableCharacters[random];
+
+            currentCharacterString = allowableCharacters[random];
         }
 
         public string GetCurrentCharacterString()
