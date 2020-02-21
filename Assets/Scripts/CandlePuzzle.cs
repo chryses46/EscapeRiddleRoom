@@ -9,7 +9,6 @@ namespace Core.UI
         [SerializeField] GameObject outline;
         [SerializeField] GameObject selected;
         [SerializeField] Candle[] candles;
-        [SerializeField] Core.Interactables.Door doorToUnlock;
 
         private int numberOfCandles = 4;
 
@@ -127,8 +126,6 @@ namespace Core.UI
             if(matches == candles.Length)
             {
                 GameManager.instance.ExitPuzzle(true);
-                
-                doorToUnlock.UnlockDoor();
             }
         }
 

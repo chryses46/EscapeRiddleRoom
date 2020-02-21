@@ -22,6 +22,7 @@ namespace Core
         PuzzleZone puzzle;
         RiddleZone riddle;
         Door door;
+        BookShelfZone bookShelf;
 
         private void Start()
         {
@@ -77,6 +78,10 @@ namespace Core
             {
                 door.Interact();
             }
+            else if (bookShelf)
+            {
+                bookShelf.Interact();
+            }
         }
 
         private void AnimateSprite(float horizontal, float vertical)
@@ -128,7 +133,7 @@ namespace Core
             }
         }
 
-        public void SetInteractable(PuzzleZone puzzleObject = null, RiddleZone riddleObject = null, Door doorObject = null)
+        public void SetInteractable(PuzzleZone puzzleObject = null, RiddleZone riddleObject = null, Door doorObject = null, BookShelfZone bookshelfObject = null)
         {
             if(puzzleObject != null)
             {
@@ -142,6 +147,10 @@ namespace Core
             {
                 door = doorObject;
             }
+            else if (bookshelfObject != null)
+            {
+                bookShelf = bookshelfObject;
+            }
         }
 
         public void ClearInteractable()
@@ -149,6 +158,7 @@ namespace Core
             puzzle = null;
             riddle = null;
             door = null;
+            bookShelf = null;
         }
 
         public void FadePlayerOut()

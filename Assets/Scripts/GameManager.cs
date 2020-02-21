@@ -27,6 +27,10 @@ namespace Core
 
         private Interactables.PuzzleZone currentPuzzleZone;
 
+        private string keypadAnswer1 = "", keypadAnswer2 = "";
+
+        bool bookShelfNumbersGiven;
+
         UIManager uiManager;
         DialogSystem dialogSystem;
 
@@ -104,9 +108,11 @@ namespace Core
             StateMachineController.instance.gameState = StateMachineController.State.Puzzle;
         }
 
-        public void ExitPuzzle(bool puzzleWasSolved = false)
+        public void ExitPuzzle(bool puzzleWasSolved = false, bool finalPuzzle = false)
         {
             if (puzzleWasSolved) currentPuzzleZone.SetLinkedPuzzleSolved();
+
+            if (finalPuzzle) uiManager.EnableRiddlePopUp(null, true);
 
             currentPuzzleUI.SetActive(false);
             currentPuzzleUI = null;
@@ -123,6 +129,45 @@ namespace Core
             player.TeleportPlayer(targetDoor.GetPlayerPortZonePosition());
             //consider facing direction sprite for player
             player.FadePlayerIn();
+        }
+
+        public void SetKeypadAnswer(int keypadNum, string keypadAnswer)
+        {
+            switch (keypadNum)
+            {
+                case 1:
+                    keypadAnswer1 = keypadAnswer;
+                    break;
+                case 2:
+                    keypadAnswer2 = keypadAnswer;
+                    break;
+
+            }
+
+        }
+
+        public string GetKeyPadAnswer(int requestdAnswer)
+        {
+            if(requestdAnswer == 1)
+            {
+                return keypadAnswer1;
+            }
+            else if(requestdAnswer == 2)
+            {
+                return keypadAnswer2;
+            }
+
+            return null;
+        }
+
+        public bool IsBookshelfNumbersFilled()
+        {
+            if (keypadAnswer1 != "" && keypadAnswer2 != "")
+            {
+                return true;
+            }
+
+            return false;  
         }
     }
 }

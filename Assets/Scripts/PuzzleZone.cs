@@ -12,6 +12,8 @@ namespace Core.Interactables
 
         [SerializeField] GameObject solvedPuzzleDisplay;
 
+        [SerializeField] Core.Interactables.Door doorToUnlock;
+
         private bool isPuzzleSolved;
 
 
@@ -52,6 +54,10 @@ namespace Core.Interactables
         {
             isPuzzleSolved = true;
             EnableSolvedPuzzleDisplay();
+            
+            if(doorToUnlock) doorToUnlock.UnlockDoor();
+                
+
         }
 
         private void EnableSolvedPuzzleDisplay()

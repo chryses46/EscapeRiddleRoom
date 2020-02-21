@@ -15,6 +15,7 @@ namespace Core
         [SerializeField] GameObject timer;
         [SerializeField] GameObject riddlePopUp;
         [SerializeField] Image riddleImage;
+        [SerializeField] Sprite finalClueSprite;
         [SerializeField] GameObject gameOverUICanvas;
 
         public void ToggleMainMenuUI(bool isActive)
@@ -47,11 +48,22 @@ namespace Core
             timer.GetComponent<Core.UI.Timer>().StartTimer();
         }
 
-        public void EnableRiddlePopUp(Sprite imageForRiddle)
+        public void EnableRiddlePopUp(Sprite imageForRiddle, bool finalClue = false)
         {
-            riddleImage.sprite = imageForRiddle;
-            riddlePopUp.SetActive(true);
-            riddleImage.gameObject.SetActive(true);
+            if(finalClue)
+            {
+                riddleImage.sprite = finalClueSprite;
+                riddlePopUp.SetActive(true);
+                riddleImage.gameObject.SetActive(true);
+                StartCoroutine(waitThreeSeconds());
+                
+            }
+            else
+            {
+                riddleImage.sprite = imageForRiddle;
+                riddlePopUp.SetActive(true);
+                riddleImage.gameObject.SetActive(true);
+            }
         }
 
         internal void CloseRiddlePopUp()
@@ -59,6 +71,13 @@ namespace Core
             riddleImage.gameObject.SetActive(false);
             riddlePopUp.SetActive(false);
             riddleImage.sprite = null;
+        }
+
+        IEnumerator waitThreeSeconds()
+        {
+            yield return new WaitForSeconds(3);
+            CloseRiddlePopUp();
+
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Core.Interactables
 
             if(buttonsUp == ovenButtons.Length)
             {
-                GameManager.instance.ExitPuzzle(true);
+                GameManager.instance.ExitPuzzle(true,true);
             }
         }
 

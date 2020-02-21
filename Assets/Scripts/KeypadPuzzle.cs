@@ -255,9 +255,17 @@ namespace Core.Interactables
             SetNumberEntry(currentKeyPadNumber.GetKeyNumber());
         }
 
-        private void ExitPuzzle()
+        private void ExitPuzzle(bool isSolved = false)
         {
-            GameManager.instance.ExitPuzzle();
+            if(isSolved)
+            {
+                GameManager.instance.ExitPuzzle(isSolved);
+            }
+            else
+            {
+                GameManager.instance.ExitPuzzle();
+            }
+            
         }
 
         private void SetNumberEntry(string numberToEnter)
@@ -269,6 +277,8 @@ namespace Core.Interactables
             else if(numberEntry2.text == "")
             {
                 numberEntry2.text = numberToEnter;
+
+                if(numberEntry1.text == GameManager.instance.GetKeyPadAnswer(1) && numberEntry2.text == GameManager.instance.GetKeyPadAnswer(2)) ExitPuzzle(true);
             }
             else
             {

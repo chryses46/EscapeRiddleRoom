@@ -38,6 +38,9 @@ namespace Core.Control
                     break;
                 case StateMachineController.State.Pause:
                     break;
+                case StateMachineController.State.Bookshelf:
+                    if (Input.GetButtonDown("Cancel")){ FindObjectOfType<Core.Interactables.BookShelfZone>().DisableBookshelf(); } 
+                    break;
                 case StateMachineController.State.Menu: // done
                     if (Input.GetButtonDown("Submit")) { GameManager.instance.StartGame(); }
                     break;
