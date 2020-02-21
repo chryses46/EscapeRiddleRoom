@@ -88,12 +88,14 @@ namespace Core.Interactables
         {
             PickRandomPair();
 
-            for (int i = 0; i < chosenCharacterNumeralPairs.Length; i++)
+            Debug.Log("charnumpairlen:" + chosenCharacterNumeralPairs.Length);
+
+            for (int i = 0; i < 4; i++)
             {
                 characters[i].SetCharacterString(chosenCharacterNumeralPairs[i, 0]);
             }
 
-            for (int i = 0; i < chosenCharacterNumeralPairs.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 numerals[i].SetNumeralString(chosenCharacterNumeralPairs[0, i]);
             }
