@@ -7,9 +7,20 @@ namespace Core.Interactables
 {
     public class WireNumeral : MonoBehaviour
     {
+        [SerializeField] Image straightWire;
+        [SerializeField] Image oneOverWire;
+        [SerializeField] Image twoOverWire;
+        [SerializeField] Image threeOverWire;
+
         Text numeralText;
 
-        string currentNumeralString;
+        private int activeWireImage;
+
+        private string currentNumeralString;
+
+        private string matchingCharacterAnswer;
+
+        WireCharacter chosenWireCharacter;
 
         private void Awake()
         {
@@ -26,6 +37,39 @@ namespace Core.Interactables
         public string GetCurrentNumeralString()
         {
             return currentNumeralString;
+        }
+
+        public void SetActiveWireImage(int selectedCharacterNode)
+        {
+            switch(selectedCharacterNode)
+            {
+
+            }
+        }
+
+        public void SetChosenWireCharacter(WireCharacter chosenCharacter)
+        {
+            chosenWireCharacter = chosenCharacter;
+
+        }
+
+        public void SetMatchingCharacterAnswer(string answer)
+        {
+            matchingCharacterAnswer = answer;
+        }
+
+
+        public bool IsChosenWireCharacterMatching()
+        {
+
+            if(chosenWireCharacter.GetCurrentCharacterString() == matchingCharacterAnswer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

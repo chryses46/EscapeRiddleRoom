@@ -11,19 +11,19 @@ namespace Core.Interactables
 
         string currentCharacterString;
 
-        private void Awake()
+        private void Start()
         {
-            characterText = GetComponent<Text>();
+            characterText = gameObject.GetComponent<Text>();
         }
 
-        public void SetNumeralString(string givenNumeralString)
+        public void SetCharacterString(string givenCharacterString)
         {
-            currentCharacterString = givenNumeralString;
+            currentCharacterString = givenCharacterString;
 
             characterText.text = currentCharacterString;
         }
 
-        public string GetCurrentNumeralString()
+        public string GetCurrentCharacterString()
         {
             return currentCharacterString;
         }
