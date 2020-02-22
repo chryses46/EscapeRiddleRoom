@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,10 +19,15 @@ namespace Core.UI
 
         bool timerRunning;
 
+        float startingTime = 0;
+
+        float clockTime;
+
         void Start()
         {
             clockText = gameObject.GetComponent<Text>();
             clockText.text = "30:00";
+
         }
 
         void Update()
@@ -29,31 +35,32 @@ namespace Core.UI
             SetTimerTime();
         }
 
+        private void IterateSeconds()
+        {
+            startingTime += Time.deltaTime;
+
+            if(startingTime >= 1)
+            {
+                currentSecond--;
+
+                startingTime = -1;
+            }
+        }
+
         private void SetTimerTime()
         {
             if (timerRunning == true)
             {
-                frames++;
+                IterateSeconds();
 
-                if (frames >= 60)
+                if (currentSecond <= 0)
                 {
-                    secondsCounted++;
+                    //if (secondsCounted == TOTAL_TIME) TimerEnds();
 
-                    if (secondsCounted % 60 == 0 && secondsCounted != 0)
-                    {
-                        if (secondsCounted == TOTAL_TIME) TimerEnds();
-
-                        currentMinute--;
-                        currentSecond = 59;
-                    }
-                    else
-                    {
-                        currentSecond--;
-                    }
-
-                    frames = 0;
+                    currentMinute--;
+                    currentSecond = 59;
                 }
-
+                    
                 SetClockText();
             }
         }
@@ -76,7 +83,6 @@ namespace Core.UI
         public void StartPauseTimer()
         {
             timerRunning = !timerRunning;
-            Debug.Log("Timer is running: " + timerRunning);
         }
 
         public void StartTimer()

@@ -12,7 +12,7 @@ namespace Core.Interactables
 
         [SerializeField] GameObject solvedPuzzleDisplay;
 
-        [SerializeField] Core.Interactables.Door doorToUnlock;
+        [SerializeField] Core.Interactables.Door[] doorsToUnlock;
 
         private bool isPuzzleSolved;
 
@@ -54,8 +54,11 @@ namespace Core.Interactables
         {
             isPuzzleSolved = true;
             EnableSolvedPuzzleDisplay();
-            
-            if(doorToUnlock) doorToUnlock.UnlockDoor();
+
+            foreach (Core.Interactables.Door doorToUnlock in doorsToUnlock)
+            {
+                doorToUnlock.UnlockDoor();
+            }
                 
 
         }

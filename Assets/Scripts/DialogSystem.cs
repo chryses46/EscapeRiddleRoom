@@ -119,6 +119,7 @@ namespace Core
 
         public void SkipDialog()
         {
+            gameObject.GetComponent<UIManager>().ToggleTimer(true);
             ExitDialogState();
         }
 
