@@ -6,6 +6,10 @@ using System;
 
 namespace Core
 {
+    [RequireComponent(typeof(CircleCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Player : MonoBehaviour
     {
         Animator animator;

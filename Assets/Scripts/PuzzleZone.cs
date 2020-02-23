@@ -12,6 +12,10 @@ namespace Core.Interactables
 
         [SerializeField] GameObject solvedPuzzleDisplay;
 
+        [SerializeField] Sprite solvedPuzzleDisplayAlt;
+
+        [SerializeField] GameObject[] optionalObjectsToDisableOnSolved;
+
         [SerializeField] Core.Interactables.Door[] doorsToUnlock;
 
         private bool isPuzzleSolved;
@@ -66,7 +70,23 @@ namespace Core.Interactables
         private void EnableSolvedPuzzleDisplay()
         {
             if(solvedPuzzleDisplay)
+            {
                 solvedPuzzleDisplay.SetActive(true);
+            }
+            else if(solvedPuzzleDisplayAlt)
+            {
+                FindObjectOfType<GameBoardHandler>().GetCurrentRoom().GetComponent<SpriteRenderer>().sprite = solvedPuzzleDisplayAlt;
+
+                if(optionalObjectsToDisableOnSolved.Length > 0)
+                {
+                    for (int i = 0; i < optionalObjectsToDisableOnSolved.Length; i++)
+                    {
+                        optionalObjectsToDisableOnSolved[i].SetActive(false);
+                    }
+                }
+
+            }
+                
         }
     }
 }
