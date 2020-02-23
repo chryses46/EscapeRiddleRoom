@@ -21,14 +21,14 @@ namespace Core.Interactables
         {
             float currentButtonDegreeofRotation = rectTransform.eulerAngles.z;
 
-            if (currentButtonDegreeofRotation >= 180)
+            if (currentButtonDegreeofRotation > 90)
             {
                 Vector3 currentRotation = rectTransform.eulerAngles;
                 currentRotation.z = 0;
                 rectTransform.eulerAngles = currentRotation;
 
             }
-            else if(currentButtonDegreeofRotation <= 180)
+            else if(currentButtonDegreeofRotation < 90)
             {
                 Vector3 currentRotation = rectTransform.eulerAngles;
                 currentRotation.z = 180;

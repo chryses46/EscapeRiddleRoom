@@ -78,6 +78,7 @@ namespace Core.Interactables
         {
             if (!dpadActive && Mathf.Abs(Input.GetAxis("DPadHorizontal")) == 1)
             {
+                
                 dpadActive = true;
 
                 if (currentFinger == ovenFingers.Length)
@@ -101,7 +102,6 @@ namespace Core.Interactables
             {
                 dpadActive = false;
             }
-
         }
 
         private void SetButtonAndFinger()

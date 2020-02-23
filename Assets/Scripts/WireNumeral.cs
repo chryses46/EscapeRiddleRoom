@@ -14,8 +14,6 @@ namespace Core.Interactables
         [SerializeField] Image threeOverWire;
 
         Text numeralText;
-
-
         string[] allowableNumerals = new string[]
         {
             "I",
@@ -36,22 +34,40 @@ namespace Core.Interactables
 
         private string matchingCharacterAnswer;
 
-        WireCharacter chosenWireCharacter;
-
         private void Awake()
         {
             numeralText = GetComponent<Text>();
-            SetNumeralString();
         }
 
-        public void SetNumeralString()
+        public void SetNumeralString(int numeralLocation)
         {
-            int random = UnityEngine.Random.Range(1, 9);
-
-            numeralText.text = allowableNumerals[random];
-
-            currentNumeralString = allowableNumerals[random];
+            numeralText.text = allowableNumerals[numeralLocation];
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public string GetCurrentNumeralString()
         {
@@ -69,30 +85,12 @@ namespace Core.Interactables
             }
         }
 
-        public void SetChosenWireCharacter(WireCharacter chosenCharacter)
-        {
-            chosenWireCharacter = chosenCharacter;
-
-        }
-
         public void SetMatchingCharacterAnswer(string answer)
         {
             matchingCharacterAnswer = answer;
         }
 
 
-        public bool IsChosenWireCharacterMatching()
-        {
-
-            if(chosenWireCharacter.GetCurrentCharacterString() == matchingCharacterAnswer)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }
 

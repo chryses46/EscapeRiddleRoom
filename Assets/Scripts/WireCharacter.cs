@@ -25,18 +25,15 @@ namespace Core.Interactables
             "J",
         };
 
-        private void Start()
+        private void Awake()
         {
-            characterText = gameObject.GetComponent<Text>();
+            characterText = GetComponent<Text>();
         }
 
-        public void SetCharacterString(string givenCharacterString)
+        public void SetCharacterString(int stringLocation)
         {
-            int random = UnityEngine.Random.Range(1, 9);
-
-            characterText.text = allowableCharacters[random];
-
-            currentCharacterString = allowableCharacters[random];
+            Debug.Log("stringLocation is :" + stringLocation);
+            characterText.text = allowableCharacters[stringLocation];
         }
 
         public string GetCurrentCharacterString()
