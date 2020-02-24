@@ -21,14 +21,16 @@ namespace Core.Interactables
 
         private const int LOWER_NUMERAL_AND_CHARACTER_BOUND = 0;
 
-        private const int UPPER_NUMERAL_AND_CHARACTER_BOUND = 9;
+        private const int UPPER_NUMERAL_AND_CHARACTER_BOUND = 10;
         
-        private int[] selectedNumeralAndCharacterPairs = new int[4];
+        // Making each of these -1 initially will allow 0 to be set. Elsewise, 0 is the default int when declaring a blank array of any length.
+        private int[] selectedNumeralAndCharacterPairs = new int[4] { -1,-1,-1,-1 };
 
         private void Awake()
         {
             ChooseNumeralAndCharacterPairs();
             SetNumerals();
+            SetCharacters();
         }
 
         private void Update()
@@ -57,29 +59,33 @@ namespace Core.Interactables
 
         private void SetNumerals()
         {
-
-            int[] occupiedNumeralArrayElement = new int[4];
+            int[] occupiedNumeralArrayElement = new int[4] { -1, -1, -1, -1 };
 
             for (int i = 0; i <=3; i++)
             {
-                numerals[GetRandomElementForGivenArray(0, 3, occupiedNumeralArrayElement, i)].SetNumeralString(selectedNumeralAndCharacterPairs[i]);
+
+                numerals[GetRandomElementForGivenArray(0, 4, occupiedNumeralArrayElement, i)].SetNumeralString(selectedNumeralAndCharacterPairs[i]);
+                
             }
         }
 
-        private void SetCharacterAndNumeral(int randomCharacterOrNumberal)
+        private void SetCharacters()
         {
-                // make i random as well eventually for each numerals and characters
-               
-            
+            int[] occupiedCharacterArrayElement = new int[4] { -1, -1, -1, -1 };
 
-            //characters[elementPositionInArray].SetCharacterString(randomCharacterOrNumberal);
+            for (int i = 0; i <= 3; i++)
+            {
+
+                characters[GetRandomElementForGivenArray(0, 4, occupiedCharacterArrayElement, i)].SetCharacterString(selectedNumeralAndCharacterPairs[i]);
+
+            }
         }
 
         /// <summary>
         /// This method returns a random array element.
         /// </summary>
-        /// <param name="lowerRandomNumberBound"> The lower bound of the returned random number.</param>
-        /// <param name="upperRandomNumberBound"> The upper bound of the returned random number.</param>
+        /// <param name="lowerRandomNumberBound"> The lower bound of the returned random number (inclusive).</param>
+        /// <param name="upperRandomNumberBound"> The upper bound of the returned random number (not inclusive).</param>
         /// <param name="array"> The array in which to check against for uniqueness.</param>
         /// <param name="currentArrayElementIteration"> The current for-loop iteration for the checking array.</param>
         /// <returns></returns>
@@ -95,9 +101,9 @@ namespace Core.Interactables
 
                 bool containsMatch = false;
 
-                for (int j = 0; j < array.Length; j++)
+                foreach(int num in array)
                 {
-                    if (randomNumber == array[j])
+                    if (randomNumber == num)
                     {
                         containsMatch = true;
                     }
