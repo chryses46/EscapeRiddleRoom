@@ -9,12 +9,19 @@ namespace Core.Control
     {
 
        [SerializeField] Player player;
+
         DialogSystem dialogSystem;
+
+        Core.Journal journal;
+
         Core.UI.Timer timer;
 
         private void Start()
         {
             dialogSystem = GetComponent<DialogSystem>();
+
+            journal = GetComponent<Journal>();
+
             timer = FindObjectOfType<Core.UI.Timer>();
         }
 
@@ -37,6 +44,7 @@ namespace Core.Control
                     PuzzleControls();
                     break;
                 case StateMachineController.State.Pause:
+                    PauseControls();
                     break;
                 case StateMachineController.State.Bookshelf:
                     if (Input.GetButtonDown("Cancel")){ FindObjectOfType<Core.Interactables.BookShelfZone>().DisableBookshelf(); } 
@@ -62,9 +70,22 @@ namespace Core.Control
 
             if(Input.GetButtonDown("Submit"))
                 player.Interact();
+            else if(Input.GetButtonDown("Cancel"))
+            {
+                journal.EnableJournal();
+            }
 
             DebugControls();
         }
+
+        private void PauseControls()
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                journal.DisableJournal();
+            }
+        }
+
         private void PuzzleControls()
         {
             // controls for the puzzles which will really just be handled in each puzzle's master script

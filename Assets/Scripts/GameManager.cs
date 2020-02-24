@@ -11,8 +11,11 @@ namespace Core
 
         // Controller detection variables
         public bool playerIndexSet = false;
+
         PlayerIndex playerIndex;
+
         GamePadState state;
+
         GamePadState prevState;
 
         [SerializeField] Player player;
@@ -32,7 +35,9 @@ namespace Core
         bool bookShelfNumbersGiven;
 
         UIManager uiManager;
+
         DialogSystem dialogSystem;
+
         AudioController audioController;
 
         void Awake ()

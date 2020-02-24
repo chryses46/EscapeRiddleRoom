@@ -453,6 +453,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43601830}
+  - component: {fileID: 43601832}
+  - component: {fileID: 43601831}
   m_Layer: 5
   m_Name: riddle1
   m_TagString: Untagged
@@ -474,13 +476,49 @@ RectTransform:
   - {fileID: 846974507}
   - {fileID: 1071067925}
   m_Father: {fileID: 1592275324}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5262585, y: 0.55463445}
-  m_AnchorMax: {x: 0.97900003, y: 1}
+  m_AnchorMax: {x: 0.97900003, y: 0.99027115}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &43601831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43601829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69411767, g: 0.62352943, b: 0.49411768, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &43601832
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43601829}
+  m_CullTransparentMesh: 0
 --- !u!1 &43919272
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleImage: {fileID: 21300000, guid: 9a6679b613349c948a61296599976774, type: 3}
+  riddleIndex: 2
 --- !u!58 &46925594
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1077,6 +1116,79 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134431207}
+  m_CullTransparentMesh: 0
+--- !u!1 &135020814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135020815}
+  - component: {fileID: 135020817}
+  - component: {fileID: 135020816}
+  m_Layer: 5
+  m_Name: border1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &135020815
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135020814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592275324}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.51948303, y: 0.5442927}
+  m_AnchorMax: {x: 0.9876462, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &135020816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135020814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &135020817
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135020814}
   m_CullTransparentMesh: 0
 --- !u!1 &138696353
 GameObject:
@@ -2797,6 +2909,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425098251}
+  - component: {fileID: 425098253}
+  - component: {fileID: 425098252}
   m_Layer: 5
   m_Name: riddle2
   m_TagString: Untagged
@@ -2818,13 +2932,49 @@ RectTransform:
   - {fileID: 2122545561}
   - {fileID: 886008079}
   m_Father: {fileID: 1592275324}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.021258509, y: 0}
-  m_AnchorMax: {x: 0.4707755, y: 0.44878015}
+  m_AnchorMin: {x: 0.021258509, y: 0.032813203}
+  m_AnchorMax: {x: 0.4707755, y: 0.47027108}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &425098252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425098250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69411767, g: 0.62352943, b: 0.49411768, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &425098253
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425098250}
+  m_CullTransparentMesh: 0
 --- !u!1 &441132179
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,12 +3253,12 @@ GameObject:
   - component: {fileID: 482432748}
   - component: {fileID: 482432747}
   m_Layer: 5
-  m_Name: PauseInventory
+  m_Name: Pause-Journal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &482432746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4457,6 +4607,7 @@ GameObject:
   - component: {fileID: 703530049}
   - component: {fileID: 703530051}
   - component: {fileID: 703530050}
+  - component: {fileID: 703530052}
   m_Layer: 5
   m_Name: foyerRiddleImage
   m_TagString: Untagged
@@ -4501,7 +4652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52716a980d91a444eaf04be3f5bf8e19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4519,6 +4670,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703530048}
   m_CullTransparentMesh: 0
+--- !u!114 &703530052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703530048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91b0870e8f7b7745ac81fa6f12778ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mysterySprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
+  riddleSprite: {fileID: 21300000, guid: 52716a980d91a444eaf04be3f5bf8e19, type: 3}
 --- !u!1 &707446983
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,7 +4704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &707446984
 Transform:
   m_ObjectHideFlags: 0
@@ -4548,7 +4713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707446983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.12, y: -0.94, z: 0}
+  m_LocalPosition: {x: -6.76, y: 4.37, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5928,6 +6093,7 @@ GameObject:
   - component: {fileID: 886008079}
   - component: {fileID: 886008081}
   - component: {fileID: 886008080}
+  - component: {fileID: 886008082}
   m_Layer: 5
   m_Name: diningRiddleImage
   m_TagString: Untagged
@@ -5972,7 +6138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a6679b613349c948a61296599976774, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5990,6 +6156,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886008078}
   m_CullTransparentMesh: 0
+--- !u!114 &886008082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886008078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91b0870e8f7b7745ac81fa6f12778ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mysterySprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
+  riddleSprite: {fileID: 21300000, guid: 9a6679b613349c948a61296599976774, type: 3}
 --- !u!1 &911594645
 GameObject:
   m_ObjectHideFlags: 0
@@ -6423,6 +6603,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisKeysNumber: 5
+--- !u!1 &970779011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970779012}
+  - component: {fileID: 970779014}
+  - component: {fileID: 970779013}
+  m_Layer: 5
+  m_Name: border3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &970779012
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970779011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592275324}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.51948303, y: 0.019728936}
+  m_AnchorMax: {x: 0.9876462, y: 0.47845784}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &970779013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970779011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &970779014
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970779011}
+  m_CullTransparentMesh: 0
 --- !u!1 &975542313
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,6 +6949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleImage: {fileID: 21300000, guid: 52716a980d91a444eaf04be3f5bf8e19, type: 3}
+  riddleIndex: 0
 --- !u!58 &1059792540
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6853,6 +7107,7 @@ GameObject:
   - component: {fileID: 1071067925}
   - component: {fileID: 1071067927}
   - component: {fileID: 1071067926}
+  - component: {fileID: 1071067928}
   m_Layer: 5
   m_Name: denRiddleImage
   m_TagString: Untagged
@@ -6897,7 +7152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e922001c2601ece4fac38114b6e5fca4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6915,6 +7170,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071067924}
   m_CullTransparentMesh: 0
+--- !u!114 &1071067928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071067924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91b0870e8f7b7745ac81fa6f12778ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mysterySprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
+  riddleSprite: {fileID: 21300000, guid: e922001c2601ece4fac38114b6e5fca4, type: 3}
 --- !u!1001 &1072627521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8246,6 +8515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleImage: {fileID: 21300000, guid: e922001c2601ece4fac38114b6e5fca4, type: 3}
+  riddleIndex: 1
 --- !u!58 &1219087276
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8801,6 +9071,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327109426}
   m_CullTransparentMesh: 0
+--- !u!1 &1346779572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346779573}
+  - component: {fileID: 1346779575}
+  - component: {fileID: 1346779574}
+  m_Layer: 5
+  m_Name: border2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1346779573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346779572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592275324}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.012646269, y: 0.019728936}
+  m_AnchorMax: {x: 0.47861224, y: 0.47845784}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1346779574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346779572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1346779575
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346779572}
+  m_CullTransparentMesh: 0
 --- !u!1 &1354732315
 GameObject:
   m_ObjectHideFlags: 0
@@ -8978,6 +9321,7 @@ GameObject:
   - component: {fileID: 1393849299}
   - component: {fileID: 1393849300}
   - component: {fileID: 1393849301}
+  - component: {fileID: 1393849302}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -9011,7 +9355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dc0aad80ec5ca49bac12d2453e7004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 4
+  gameState: 0
 --- !u!114 &1393849296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9189,6 +9533,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1393849302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393849293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1ebd389c6b31468c87d3972dc3efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  journalGameObject: {fileID: 482432745}
+  journalRiddleCounter: {fileID: 1909119214}
+  journalRiddleImages:
+  - {fileID: 703530052}
+  - {fileID: 1071067928}
+  - {fileID: 886008082}
+  - {fileID: 1773423587}
 --- !u!1 &1397439290
 GameObject:
   m_ObjectHideFlags: 0
@@ -10214,10 +10577,10 @@ RectTransform:
   m_Father: {fileID: 482432746}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.40387076, y: 0.8923285}
-  m_AnchorMax: {x: 0.5948708, y: 0.9465235}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.40387076, y: 0.9314766}
+  m_AnchorMax: {x: 0.59922457, y: 0.99085927}
+  m_AnchoredPosition: {x: 0.36136627, y: 0}
+  m_SizeDelta: {x: -0.72266, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1553898136
 GameObject:
@@ -10718,15 +11081,19 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1662002194}
   - {fileID: 1655452506}
+  - {fileID: 135020815}
   - {fileID: 43601830}
+  - {fileID: 1346779573}
   - {fileID: 425098251}
+  - {fileID: 970779012}
   - {fileID: 1760823451}
   m_Father: {fileID: 482432746}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.8923285}
+  m_AnchorMax: {x: 1, y: 0.9314766}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11485,6 +11852,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1655452506}
+  - component: {fileID: 1655452508}
+  - component: {fileID: 1655452507}
   m_Layer: 5
   m_Name: riddle0
   m_TagString: Untagged
@@ -11506,13 +11875,122 @@ RectTransform:
   - {fileID: 1172146757}
   - {fileID: 703530049}
   m_Father: {fileID: 1592275324}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.021258509, y: 0.55463445}
-  m_AnchorMax: {x: 0.4707755, y: 1}
+  m_AnchorMax: {x: 0.4707755, y: 0.99027115}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1655452507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655452505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69411767, g: 0.62352943, b: 0.49411768, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1655452508
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655452505}
+  m_CullTransparentMesh: 0
+--- !u!1 &1662002193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1662002194}
+  - component: {fileID: 1662002196}
+  - component: {fileID: 1662002195}
+  m_Layer: 5
+  m_Name: border0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1662002194
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662002193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592275324}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.012646269, y: 0.5442927}
+  m_AnchorMax: {x: 0.47861224, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1662002195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662002193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1662002196
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662002193}
+  m_CullTransparentMesh: 0
 --- !u!1 &1676175616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12169,6 +12647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleImage: {fileID: 21300000, guid: 3e4f32accdb50a14997d1e442a2e93f5, type: 3}
+  riddleIndex: 3
 --- !u!58 &1721125740
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12805,6 +13284,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760823451}
+  - component: {fileID: 1760823453}
+  - component: {fileID: 1760823452}
   m_Layer: 5
   m_Name: riddle3
   m_TagString: Untagged
@@ -12826,13 +13307,49 @@ RectTransform:
   - {fileID: 170809102}
   - {fileID: 1773423584}
   m_Father: {fileID: 1592275324}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5262585, y: 0}
-  m_AnchorMax: {x: 0.97900003, y: 0.44878015}
+  m_AnchorMin: {x: 0.5262585, y: 0.032813203}
+  m_AnchorMax: {x: 0.97900003, y: 0.47027108}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1760823452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760823450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69411767, g: 0.62352943, b: 0.49411768, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1760823453
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760823450}
+  m_CullTransparentMesh: 0
 --- !u!1 &1773423583
 GameObject:
   m_ObjectHideFlags: 0
@@ -12844,6 +13361,7 @@ GameObject:
   - component: {fileID: 1773423584}
   - component: {fileID: 1773423586}
   - component: {fileID: 1773423585}
+  - component: {fileID: 1773423587}
   m_Layer: 5
   m_Name: kitchenRiddleImage
   m_TagString: Untagged
@@ -12888,7 +13406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3e4f32accdb50a14997d1e442a2e93f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12906,6 +13424,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773423583}
   m_CullTransparentMesh: 0
+--- !u!114 &1773423587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773423583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91b0870e8f7b7745ac81fa6f12778ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mysterySprite: {fileID: 21300000, guid: f15d5956ff8604647a8080dc436be39b, type: 3}
+  riddleSprite: {fileID: 21300000, guid: 3e4f32accdb50a14997d1e442a2e93f5, type: 3}
 --- !u!1 &1781805948
 GameObject:
   m_ObjectHideFlags: 0
@@ -13785,6 +14317,7 @@ GameObject:
   - component: {fileID: 1909119211}
   - component: {fileID: 1909119213}
   - component: {fileID: 1909119212}
+  - component: {fileID: 1909119214}
   m_Layer: 5
   m_Name: riddleCountText
   m_TagString: Untagged
@@ -13851,6 +14384,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909119210}
   m_CullTransparentMesh: 0
+--- !u!114 &1909119214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909119210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40487f8e82dd3ab4c853b6e2375f1cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1940138568
 GameObject:
   m_ObjectHideFlags: 0
