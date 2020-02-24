@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Core.Interactables
         [SerializeField] Sprite riddleImage;
 
         bool riddleEnabled;
+        private bool riddleFound;
 
         private void Awake()
         {
@@ -54,12 +56,19 @@ namespace Core.Interactables
             {
                 uiManager.EnableRiddlePopUp(riddleImage);
                 riddleEnabled = true;
+                ShowRiddleInInventory();
             }
             else
             {
                 uiManager.CloseRiddlePopUp();
                 riddleEnabled = false;
             }
+        }
+
+        private void ShowRiddleInInventory()
+        {
+            riddleFound = true;
+
         }
     }
 }
