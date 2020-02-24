@@ -100,6 +100,26 @@ namespace Core.Control
                 {
                     timer.StartPauseTimer();
                 }
+                else if(Input.GetKeyDown(KeyCode.Alpha0))
+                {
+                    journal.SetRiddleIndexActive(0);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    journal.SetRiddleIndexActive(1);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    journal.SetRiddleIndexActive(2);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    journal.SetRiddleIndexActive(3);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    journal.SetRiddleIndexActive(4);
+                }
             }
         }
 

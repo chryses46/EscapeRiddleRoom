@@ -58,10 +58,14 @@ namespace Core.Interactables
             if (!riddleEnabled)
             {
                 uiManager.EnableRiddlePopUp(riddleImage);
+
                 riddleEnabled = true;
+
                 if(!riddleFound)
                 {
                     FindObjectOfType<Journal>().IterateNumRiddlesFound(riddleIndex);
+
+                    riddleFound = true;
                 }
                 
             }

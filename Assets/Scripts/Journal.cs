@@ -9,6 +9,7 @@ namespace Core
     {
         [SerializeField] GameObject journalGameObject;
 
+
         [SerializeField] Core.UI.JournalRiddleCounter journalRiddleCounter;
 
         [SerializeField] Core.UI.JournalRiddleImage[] journalRiddleImages;
@@ -18,7 +19,8 @@ namespace Core
             false, // 0 for foyer
             false, // 1 for den
             false, // 2 for dining
-            false // 3 for kitchen
+            false, // 3 for kitchen
+            false  // 4 for escape
         };
 
         private int numRiddlesFound = 0;
@@ -56,6 +58,11 @@ namespace Core
         public void SetRiddleIndexActive(int index)
         {
             riddlesActive[index] = true;
+        }
+
+        public bool[] GetActiveRiddles()
+        {
+            return riddlesActive;
         }
     }
 }

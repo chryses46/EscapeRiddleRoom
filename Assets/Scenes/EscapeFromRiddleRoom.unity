@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &222873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -645,7 +645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72156293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.184, y: 0.95, z: 0}
+  m_LocalPosition: {x: -0.73, y: 0.87, z: 0}
   m_LocalScale: {x: 1.5913229, y: 2.4171174, z: 1}
   m_Children: []
   m_Father: {fileID: 1068762216}
@@ -679,12 +679,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.56
 --- !u!50 &72156297
 Rigidbody2D:
   serializedVersion: 4
@@ -797,6 +797,7 @@ GameObject:
   - component: {fileID: 110254245}
   - component: {fileID: 110254247}
   - component: {fileID: 110254246}
+  - component: {fileID: 110254248}
   m_Layer: 5
   m_Name: CrosswordPuzzle
   m_TagString: Untagged
@@ -861,6 +862,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110254244}
   m_CullTransparentMesh: 0
+--- !u!114 &110254248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110254244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983887ff9b4af8a409865dd84f7e3fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordBankWords:
+  - {fileID: 222872}
+  - {fileID: 300975362}
+  - {fileID: 1781805948}
+  - {fileID: 1473779786}
+  - {fileID: 1424619292}
 --- !u!1 &127499544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,7 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300231887}
   m_Layer: 5
-  m_Name: word3
+  m_Name: wordContainer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2387,7 +2406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &300975363
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4299,7 +4318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672847068}
   m_Layer: 5
-  m_Name: word1
+  m_Name: wordContainer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6056,7 +6075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 882593515}
   m_Layer: 5
-  m_Name: word2
+  m_Name: wordContainer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7004,7 +7023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1068762216
 Transform:
   m_ObjectHideFlags: 0
@@ -9731,7 +9750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1424619293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10232,7 +10251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1473779787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10947,7 +10966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1588197363}
   m_Layer: 5
-  m_Name: word4
+  m_Name: wordContainer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13455,7 +13474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1781805949
 RectTransform:
   m_ObjectHideFlags: 0
