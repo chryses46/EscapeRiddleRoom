@@ -7,13 +7,14 @@ namespace Core.Interactables
 {
     public class WireNumeral : MonoBehaviour
     {
-        [SerializeField] Image hangingWire;
-        [SerializeField] Image straightWire;
-        [SerializeField] Image oneOverWire;
-        [SerializeField] Image twoOverWire;
-        [SerializeField] Image threeOverWire;
+        [SerializeField] Image disconnectedWire;
+
+        [SerializeField] Image[] wireImages;
 
         Text numeralText;
+
+        private int currentNumeralStringLocation;
+
         string[] allowableNumerals = new string[]
         {
             "I",
@@ -32,8 +33,6 @@ namespace Core.Interactables
 
         private string currentNumeralString;
 
-        private string matchingCharacterAnswer;
-
         private void Awake()
         {
             numeralText = GetComponent<Text>();
@@ -42,55 +41,37 @@ namespace Core.Interactables
         public void SetNumeralString(int numeralLocation)
         {
             numeralText.text = allowableNumerals[numeralLocation];
+
+            currentNumeralStringLocation = numeralLocation;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public string GetCurrentNumeralString()
+        public int GetCurrentNumeralStringLocation()
         {
-            return currentNumeralString;
+            return currentNumeralStringLocation;
         }
-
-
-
 
         public void SetActiveWireImage(int selectedCharacterNode)
         {
-            switch(selectedCharacterNode)
-            {
+            wireImages[activeWireImage].gameObject.SetActive(false);
 
+            activeWireImage = selectedCharacterNode;
+
+            wireImages[activeWireImage].gameObject.SetActive(true);
+        }
+
+        public void IsWireDisconnected(bool isDisconnected)
+        {
+            if(isDisconnected)
+            {
+                disconnectedWire.gameObject.SetActive(true);
+
+                wireImages[activeWireImage].gameObject.SetActive(false);
+            }
+            else
+            {
+                disconnectedWire.gameObject.SetActive(false);
             }
         }
-
-        public void SetMatchingCharacterAnswer(string answer)
-        {
-            matchingCharacterAnswer = answer;
-        }
-
-
     }
 }
 

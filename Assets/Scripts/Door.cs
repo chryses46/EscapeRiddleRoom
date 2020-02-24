@@ -40,7 +40,6 @@ namespace Core.Interactables
         {
             if(isUnlocked)
             {
-                Debug.Log("I transport you now.");
                 GameManager.instance.TransitionRooms(connectedRoom, connectedDoor);
                 player.ClearInteractable();
 

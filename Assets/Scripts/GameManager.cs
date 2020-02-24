@@ -116,6 +116,7 @@ namespace Core
             if (puzzleWasSolved)
             {
                 currentPuzzleZone.SetLinkedPuzzleSolved();
+
                 audioController.DoorUnlocking();
             }
 

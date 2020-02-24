@@ -9,7 +9,11 @@ namespace Core.Interactables
     {
         Text characterText;
 
-        string currentCharacterString;
+        int currentCharacterStringLocation;
+
+        private bool isWireAttached;
+
+        private WireNumeral currentAttachedNumeral;
 
         string[] allowableCharacters = new string[]
         {
@@ -24,6 +28,7 @@ namespace Core.Interactables
             "I",
             "J",
         };
+        
 
         private void Awake()
         {
@@ -32,13 +37,35 @@ namespace Core.Interactables
 
         public void SetCharacterString(int stringLocation)
         {
-            Debug.Log("stringLocation is :" + stringLocation);
             characterText.text = allowableCharacters[stringLocation];
+
+            currentCharacterStringLocation = stringLocation;
         }
 
-        public string GetCurrentCharacterString()
+        public int GetCurrentStringLocation()
         {
-            return currentCharacterString;
+            return currentCharacterStringLocation;
+        }
+
+        public bool HasAttachedWire()
+        {
+            return isWireAttached;
+        }
+
+        public WireNumeral CurrentAttachedNumeral()
+        {
+            return currentAttachedNumeral;
+        }
+
+        public void ToggleWireAttached(bool isAttached, WireNumeral attachedNumeral)
+        {
+            if(!isAttached)
+            {
+                currentAttachedNumeral.IsWireDisconnected(true);
+            }
+            
+            isWireAttached = isAttached;
+            currentAttachedNumeral = attachedNumeral;
         }
     }
 }
