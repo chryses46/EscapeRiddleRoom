@@ -10,18 +10,31 @@ namespace Core.UI
     {
         [SerializeField] GameObject[] wordBankWords;
 
+        [SerializeField] RowCol[] allRowCols;
+        
+        RowCol[] currentRowCols;
+
+        RowCol controlRowCol;
+
         Journal journal;
 
         private void Awake()
         {
             journal = FindObjectOfType<Journal>();
-
-
         }
 
         private void OnEnable()
         {
             PopulateWordBank();
+
+            InitializeCrossword();
+        }
+
+        private void InitializeCrossword()
+        {
+            controlRowCol = allRowCols[0];
+
+            controlRowCol.SetCurrentHoverCharacter(0);
         }
 
         private void Update()
@@ -51,6 +64,27 @@ namespace Core.UI
                     wordBankWords[i].SetActive(true);
                 }
             }
+        }
+
+        private void MoveSelector(int movementDirecton)
+        {
+            switch(controlRowCol.GetMovementDirection())
+            {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+
+        private void SetCurrentRowCols()
+        {
+
         }
 
         private void ExitPuzzle()
