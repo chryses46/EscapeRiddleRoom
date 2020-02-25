@@ -8,6 +8,7 @@ namespace Core.UI
 {
     public class RowCol : MonoBehaviour
     {
+        [Header("0=x , 1=y")]
         [SerializeField] int movementDirection;
 
         [SerializeField] CrosswordChar[] charSlots;

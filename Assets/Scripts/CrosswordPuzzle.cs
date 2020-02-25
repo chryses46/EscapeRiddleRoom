@@ -71,13 +71,21 @@ namespace Core.UI
             switch(controlRowCol.GetMovementDirection())
             {
                 case 0:
+                    // the cursor will move on the x axis
+                    if(Input.GetButtonDown("DPadHorizontal"))
+                    {
 
+                    }
                     break;
                 case 1:
+                    // the cursor will move on the y axis
+                    if(Input.GetButtonDown("DPadVertical"))
+                    {
 
+                    }
                     break;
                 case 2:
-
+                    // the cursor can move on the x and y axis
                     break;
             }
         }
