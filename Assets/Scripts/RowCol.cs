@@ -21,6 +21,19 @@ namespace Core.UI
 
         CrosswordChar currentHoverCharacter;
 
+        int currentHoverIndex;
+
+        CrosswordPuzzle crosswordPuzzle;
+
+        private void OnEnable()
+        {
+            crosswordPuzzle = FindObjectOfType<CrosswordPuzzle>();
+
+            currentHoverIndex = 0;
+
+            currentHoverCharacter = charSlots[currentHoverIndex];
+        }
+
         /// <summary>
         /// This is for setting the actual text character in the slot.
         /// </summary>
@@ -31,9 +44,24 @@ namespace Core.UI
 
         public void SetCurrentHoverCharacter(int currentIndex)
         {
-            currentHoverCharacter = charSlots[currentIndex];
-            currentHoverCharacter.GetFinger().SetActive(true);
 
+
+            if(currentHoverCharacter.GetFinger().activeSelf)
+                currentHoverCharacter.ToggleFinger(false);
+
+            currentHoverIndex = currentIndex;
+
+            crosswordPuzzle.SetControlRowColCurrentHoverIndex(currentIndex);
+
+            currentHoverCharacter = charSlots[currentHoverIndex];
+
+            currentHoverCharacter.ToggleFinger(true);
+
+        }
+
+        public int GetCurrentHoverIndex()
+        {
+            return currentHoverIndex;
         }
 
         public int GetMovementDirection()

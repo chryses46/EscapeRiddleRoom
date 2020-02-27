@@ -14,7 +14,10 @@ namespace Core.UI
             return finger;
         }
 
-
+        public void ToggleFinger(bool isActive)
+        {
+            finger.SetActive(isActive);
+        }
     }
 }
 

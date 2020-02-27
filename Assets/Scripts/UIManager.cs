@@ -55,6 +55,7 @@ namespace Core
                 riddleImage.sprite = finalClueSprite;
                 riddlePopUp.SetActive(true);
                 riddleImage.gameObject.SetActive(true);
+                gameObject.GetComponent<Journal>().SetRiddleIndexActive(4);
                 StartCoroutine(waitThreeSeconds());
                 
             }

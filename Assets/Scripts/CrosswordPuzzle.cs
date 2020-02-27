@@ -16,7 +16,15 @@ namespace Core.UI
 
         RowCol controlRowCol;
 
+        private int controlRowColNumOfChars;
+
+        private int controlRowColMovementDir;
+
+        private int controlRowColCurrentHoverIndex = 0;
+
         Journal journal;
+
+        private bool dPadActive;
 
         private void Awake()
         {
@@ -34,28 +42,47 @@ namespace Core.UI
         {
             controlRowCol = allRowCols[0];
 
+            controlRowCol.gameObject.SetActive(true);
+
             controlRowCol.SetCurrentHoverCharacter(0);
+
+            controlRowColNumOfChars = controlRowCol.GetNumCharSlots();
+
+            controlRowColMovementDir = controlRowCol.GetMovementDirection();
         }
 
         private void Update()
         {
             if(StateMachineController.instance.gameState == StateMachineController.State.Puzzle)
             {
-                if(Input.GetButtonDown("Cancel"))
+                switch (controlRowColMovementDir)
+                {
+                    case 0:
+                        HorizontallyMoveSelector();
+                        break;
+                    case 1:
+                        VerticallyMoveSelector();
+                        break;
+                    case 2:
+
+                        break;
+                }
+
+                if (Input.GetButtonDown("Cancel"))
                 {
                     ExitPuzzle();
                 }
             }
         }
 
+        private void VerticallyMoveSelector()
+        {
+            throw new NotImplementedException();
+        }
+
         private void PopulateWordBank()
         {
             bool[] currentlyFoundRiddleIndex = journal.GetActiveRiddles();
-
-            for (int i = 0; i < currentlyFoundRiddleIndex.Length; i++)
-            {
-                Debug.Log("FoundRiddleIndex " + i + " active status is " + currentlyFoundRiddleIndex[i]);
-            }
 
             for (int i = 0; i < wordBankWords.Length; i++)
             {
@@ -66,33 +93,36 @@ namespace Core.UI
             }
         }
 
-        private void MoveSelector(int movementDirecton)
+        private void HorizontallyMoveSelector()
         {
-            switch(controlRowCol.GetMovementDirection())
+            if( !dPadActive && Mathf.Abs(Input.GetAxis("DPadHorizontal")) == 1)
             {
-                case 0:
-                    // the cursor will move on the x axis
-                    if(Input.GetButtonDown("DPadHorizontal"))
-                    {
+                if (Input.GetAxis("DPadHorizontal") > 0 && controlRowColCurrentHoverIndex < controlRowColNumOfChars - 1)
+                {
+                    controlRowCol.SetCurrentHoverCharacter(controlRowColCurrentHoverIndex + 1);
+                }
+                else if (Input.GetAxis("DPadHorizontal") < 0 && controlRowColCurrentHoverIndex > 0)
+                {
+                    controlRowCol.SetCurrentHoverCharacter(controlRowColCurrentHoverIndex - 1);
+                }
 
-                    }
-                    break;
-                case 1:
-                    // the cursor will move on the y axis
-                    if(Input.GetButtonDown("DPadVertical"))
-                    {
-
-                    }
-                    break;
-                case 2:
-                    // the cursor can move on the x and y axis
-                    break;
+                dPadActive = true;   
             }
+            else if(dPadActive && Input.GetAxis("DPadHorizontal") == 0 )
+            {
+                dPadActive = false;
+            }
+            
         }
 
         private void SetCurrentRowCols()
         {
 
+        }
+
+        public void SetControlRowColCurrentHoverIndex(int index)
+        {
+            controlRowColCurrentHoverIndex = index;
         }
 
         private void ExitPuzzle()
