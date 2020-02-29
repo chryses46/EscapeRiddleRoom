@@ -56,6 +56,9 @@ namespace Core.Control
                     if (Input.GetButtonDown("Submit")) { dialogSystem.UserAdvanceDialog(); }
                     else if(Input.GetButtonDown("Cancel")) { dialogSystem.SkipDialog(); }
                     break;
+                case StateMachineController.State.GameOver:
+                    if(Input.GetButtonDown("Submit")) {GameManager.instance.LoadMainMenu(); }
+                    break;
                 default:
                     Commands();
                     break;

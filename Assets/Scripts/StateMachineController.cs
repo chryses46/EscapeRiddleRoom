@@ -6,7 +6,7 @@ namespace Core
 {
     public class StateMachineController : MonoBehaviour
     {
-        public enum State {Play, Pause, Menu, Dialog, Puzzle, Bookshelf};
+        public enum State {Play, Pause, Menu, Dialog, Puzzle, Bookshelf, GameOver};
 
         public State gameState = State.Menu;
 

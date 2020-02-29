@@ -48,7 +48,7 @@ namespace Core.UI
 
             controlRowColNumOfChars = controlRowCol.GetNumCharSlots();
 
-            controlRowColMovementDir = controlRowCol.GetMovementDirection();
+            CalculateMovementDirection();
         }
 
         private void Update()
@@ -57,14 +57,14 @@ namespace Core.UI
             {
                 switch (controlRowColMovementDir)
                 {
-                    case 0:
+                    case 1:
                         HorizontallyMoveSelector();
                         break;
-                    case 1:
+                    case 2:
                         VerticallyMoveSelector();
                         break;
-                    case 2:
-
+                    case 3:
+                        HorizontallyAndVerticallyMoveSelector();
                         break;
                 }
 
@@ -73,11 +73,6 @@ namespace Core.UI
                     ExitPuzzle();
                 }
             }
-        }
-
-        private void VerticallyMoveSelector()
-        {
-            throw new NotImplementedException();
         }
 
         private void PopulateWordBank()
@@ -90,6 +85,14 @@ namespace Core.UI
                 {
                     wordBankWords[i].SetActive(true);
                 }
+            }
+        }
+
+        private void CalculateMovementDirection()
+        {
+            for (int i = 0; i < currentRowCols.Length; i++)
+            {
+                controlRowColMovementDir += currentRowCols[i].GetMovementDirection();
             }
         }
 
@@ -113,6 +116,16 @@ namespace Core.UI
                 dPadActive = false;
             }
             
+        }
+
+        private void VerticallyMoveSelector()
+        {
+            // same as horiz, but vertical
+        }
+
+        private void HorizontallyAndVerticallyMoveSelector()
+        {
+            throw new NotImplementedException();
         }
 
         private void SetCurrentRowCols()

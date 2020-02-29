@@ -102,7 +102,7 @@ namespace Core.UI
             currentMinute = 0;
             currentSecond = 0;
 
-            Debug.Log("You lose sucka!");
+            GameManager.instance.InitiateGameOver();
         }
 
         

@@ -183,6 +183,26 @@ namespace Core
 
             return false;  
         }
+
+        public void InitiateGameOver()
+        {
+            StateMachineController.instance.gameState = StateMachineController.State.GameOver;
+
+            player.gameObject.SetActive(false);
+            gameBoard.ToggleCurrentRoom(false);
+            uiManager.ToggleTimer(false);
+            uiManager.ToggleGameOverUI(true);
+
+        }
+
+        public void LoadMainMenu()
+        {
+            StateMachineController.instance.gameState = StateMachineController.State.Menu;
+
+            uiManager.ToggleGameOverUI(false);
+            uiManager.TogglePlayUI(false);
+            uiManager.ToggleMainMenuUI(true);
+        }
     }
 }
 

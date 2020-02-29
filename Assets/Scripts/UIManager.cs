@@ -16,7 +16,7 @@ namespace Core
         [SerializeField] GameObject riddlePopUp;
         [SerializeField] Image riddleImage;
         [SerializeField] Sprite finalClueSprite;
-        [SerializeField] GameObject gameOverUICanvas;
+        [SerializeField] GameObject gameOverUI;
 
         public void ToggleMainMenuUI(bool isActive)
         {
@@ -40,7 +40,7 @@ namespace Core
 
         public void ToggleGameOverUI(bool isActive)
         {
-            gameOverUICanvas.SetActive(isActive);
+            gameOverUI.SetActive(isActive);
         }
 
         public void StartTimer()
