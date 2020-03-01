@@ -13,10 +13,6 @@ namespace Core.UI
 
         [SerializeField] CrosswordChar[] charSlots;
 
-        [SerializeField] RowCol[] linkedRowCols;
-
-        [SerializeField] int[] charCrossingIndexies;
-
         int selectedCharacterSlotIndex;
 
         CrosswordChar currentHoverCharacter;
@@ -44,10 +40,11 @@ namespace Core.UI
 
         public void SetCurrentHoverCharacter(int currentIndex)
         {
-
-
-            if(currentHoverCharacter.GetFinger().activeSelf)
-                currentHoverCharacter.ToggleFinger(false);
+            if(currentHoverCharacter)
+            {
+                if(currentHoverCharacter.GetFinger().activeSelf)
+                    currentHoverCharacter.ToggleFinger(false);
+            }
 
             currentHoverIndex = currentIndex;
 
@@ -56,7 +53,6 @@ namespace Core.UI
             currentHoverCharacter = charSlots[currentHoverIndex];
 
             currentHoverCharacter.ToggleFinger(true);
-
         }
 
         public int GetCurrentHoverIndex()
@@ -66,7 +62,7 @@ namespace Core.UI
 
         public int GetMovementDirection()
         {
-            return 0;
+            return movementDirection;
         }
 
         public int GetNumCharSlots()
@@ -74,14 +70,14 @@ namespace Core.UI
             return charSlots.Length;
         }
 
-        public RowCol[] GetLinkedRowCol()
+        public CrosswordChar[] GetCrosswordChars()
         {
-            return linkedRowCols;
+            return charSlots;
         }
 
-        public bool IsOnCrossingIndex()
+        public CrosswordChar GetCurrentHoverCharacter()
         {
-            return false;
+            return currentHoverCharacter;
         }
     }
 }

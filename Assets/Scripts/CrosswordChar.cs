@@ -9,6 +9,12 @@ namespace Core.UI
     {
         [SerializeField] GameObject finger;
 
+        [SerializeField] RowCol linkedRowCol;
+
+        [SerializeField] bool isCrossingIndexChar;
+
+        [SerializeField] CrosswordChar linkedCrosswordChar;
+
         public GameObject GetFinger()
         {
             return finger;
@@ -17,6 +23,26 @@ namespace Core.UI
         public void ToggleFinger(bool isActive)
         {
             finger.SetActive(isActive);
+        }
+
+        public bool IsCrossingIndexChar()
+        {
+            return isCrossingIndexChar;
+        }
+
+        public RowCol GetLinkedRowCol()
+        {
+            return linkedRowCol;
+        }
+
+        public RowCol GetParentRowCol()
+        {
+            return GetComponentInParent<RowCol>();
+        }
+
+        public CrosswordChar GetLinkedCrosswordChar()
+        {
+            return linkedCrosswordChar;
         }
     }
 }

@@ -667,6 +667,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1738163606}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &72156293
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +858,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 643955133}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &95528876
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,10 +942,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 2
   charSlots: []
-  linkedRowCols:
-  - {fileID: 526736549}
-  - {fileID: 1892582974}
-  charCrossingIndexies: 
 --- !u!1 &110254244
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &110254245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1041,6 +1043,16 @@ MonoBehaviour:
   - {fileID: 1892582974}
   - {fileID: 1673408232}
   - {fileID: 98960511}
+  currentRowCols:
+  - {fileID: 0}
+  - {fileID: 0}
+  controlRowCol: {fileID: 0}
+  movementDirection: 0
+  controlRowColCurrentHoverIndex: 0
+  currentLinkingRowCol: {fileID: 0}
+  currentLinkingCrosswordChar: {fileID: 0}
+  dPadActive: 0
+  exchangingControlRowCol: 0
 --- !u!1 &127499544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,10 +3927,6 @@ MonoBehaviour:
   - {fileID: 765573172}
   - {fileID: 1415195926}
   - {fileID: 1871049057}
-  linkedRowCols:
-  - {fileID: 1673408232}
-  - {fileID: 98960511}
-  charCrossingIndexies: 0100000005000000
 --- !u!1 &537365765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,6 +4430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1327952051}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &616630444
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,6 +4483,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 333563951}
+  linkedRowCol: {fileID: 732471940}
+  isCrossingIndexChar: 1
+  linkedCrosswordChar: {fileID: 1247552897}
 --- !u!1 &641733865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,7 +5486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &707446984
 Transform:
   m_ObjectHideFlags: 0
@@ -5481,7 +5495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707446983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.76, y: 4.37, z: 0}
+  m_LocalPosition: {x: -2.27, y: -0.21, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5718,7 +5732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &732471939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5762,9 +5776,6 @@ MonoBehaviour:
   - {fileID: 904684633}
   - {fileID: 52943745}
   - {fileID: 1247552897}
-  linkedRowCols:
-  - {fileID: 1673408232}
-  charCrossingIndexies: 04000000
 --- !u!1 &765573170
 GameObject:
   m_ObjectHideFlags: 0
@@ -5815,6 +5826,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1509494749}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &773397468
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +5960,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1782133107}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &795298051
 GameObject:
   m_ObjectHideFlags: 0
@@ -7152,6 +7169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 273557619}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &911594645
 GameObject:
   m_ObjectHideFlags: 0
@@ -7279,6 +7299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1896647897}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &939651044
 GameObject:
   m_ObjectHideFlags: 0
@@ -7788,6 +7811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 253090824}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &1032257417
 GameObject:
   m_ObjectHideFlags: 0
@@ -8086,7 +8112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1068762216
 Transform:
   m_ObjectHideFlags: 0
@@ -9988,6 +10014,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1353129571}
+  linkedRowCol: {fileID: 1673408232}
+  isCrossingIndexChar: 1
+  linkedCrosswordChar: {fileID: 616630446}
 --- !u!1 &1263072327
 GameObject:
   m_ObjectHideFlags: 0
@@ -10862,7 +10891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dc0aad80ec5ca49bac12d2453e7004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 4
+  gameState: 0
 --- !u!114 &1393849296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11271,6 +11300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1383480168}
+  linkedRowCol: {fileID: 98960511}
+  isCrossingIndexChar: 1
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &1418969473
 GameObject:
   m_ObjectHideFlags: 0
@@ -11321,6 +11353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1846589385}
+  linkedRowCol: {fileID: 1673408232}
+  isCrossingIndexChar: 1
+  linkedCrosswordChar: {fileID: 1807287304}
 --- !u!1 &1419364867
 GameObject:
   m_ObjectHideFlags: 0
@@ -11371,6 +11406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 269111129}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &1424619292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13738,7 +13776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1673408231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13784,10 +13822,6 @@ MonoBehaviour:
   - {fileID: 989369260}
   - {fileID: 616630446}
   - {fileID: 793458875}
-  linkedRowCols:
-  - {fileID: 732471940}
-  - {fileID: 526736549}
-  charCrossingIndexies: 0000000004000000
 --- !u!1 &1676175616
 GameObject:
   m_ObjectHideFlags: 0
@@ -15584,6 +15618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 600639974}
+  linkedRowCol: {fileID: 526736549}
+  isCrossingIndexChar: 1
+  linkedCrosswordChar: {fileID: 1418969475}
 --- !u!1 &1818147061
 GameObject:
   m_ObjectHideFlags: 0
@@ -15831,6 +15868,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 2064134215}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &1832623784
 GameObject:
   m_ObjectHideFlags: 0
@@ -16463,6 +16503,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 402139431}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &1876481453
 GameObject:
   m_ObjectHideFlags: 0
@@ -16689,9 +16732,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 1
   charSlots: []
-  linkedRowCols:
-  - {fileID: 98960511}
-  charCrossingIndexies: 
 --- !u!1 &1896647897
 GameObject:
   m_ObjectHideFlags: 0
@@ -17294,6 +17334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 1689294184}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &2013521256
 GameObject:
   m_ObjectHideFlags: 0
@@ -17811,6 +17854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finger: {fileID: 2068923217}
+  linkedRowCol: {fileID: 0}
+  isCrossingIndexChar: 0
+  linkedCrosswordChar: {fileID: 0}
 --- !u!1 &2059772280
 GameObject:
   m_ObjectHideFlags: 0
